@@ -1,0 +1,91 @@
+.carousel {
+    padding: 0 15px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 45px;
+    }
+}
+
+.random-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.random-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.random-card:hover {
+    transform: translateY(-20px);
+}
+
+.random-card:hover img {
+    filter: brightness(1.2) blur(5px);
+    transform: scale(1.05);
+}
+
+.random-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+}
+
+.random-title.card-title {
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.random-title.card-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.random-title.card-title a:hover {
+    color: #007bff;
+}
+
+.random-title:hover {
+    color: #007bff;
+    transform: scale(1.05);
+}
+
+.random-card-link {
+    display: block;
+    background-color: #fff;
+    border-top: 1px solid #f0f0f0;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.random-card-link:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}

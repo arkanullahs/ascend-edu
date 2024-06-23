@@ -1,0 +1,140 @@
+.about {
+    background: #fff;
+    padding: 100px 0;
+}
+
+h2 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 1.75rem;
+}
+
+.carousel-section {
+    position: relative;
+}
+
+.carousel {
+    margin: 20px auto;
+    width: 100%;
+}
+
+.carousel .carousel-item {
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel .carousel-item img {
+    display: block;
+    margin: auto;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 10%;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    display: block;
+    width: 7rem;
+    height: 7rem;
+    background-size: 50%, 100%;
+}
+
+.home-card img {
+    width: 40px;
+    margin: 1.5rem auto 0.8rem;
+}
+
+.home-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+    height: auto;
+    text-align: center;
+}
+
+.banner {
+    background-color: rgb(90, 124, 153);
+    color: #fff;
+    padding: 100px;
+}
+
+.banner p {
+    font-size: 1.2em;
+}
+
+.features {
+    padding: 50px 0px;
+}
+
+.features .home-card {
+    font-size: 1em;
+    margin-bottom: 20px;
+    height: 19rem;
+}
+
+@media (max-width: 1200px) {
+    .hero {
+        background-position: center;
+    }
+
+    .features {
+        padding: 0px;
+    }
+
+    .features .home-card {
+        height: 22rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .features .home-card {
+        height: 19rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        text-align: center;
+        background-position: right;
+    }
+
+    .banner {
+        padding: 100px 8px;
+    }
+
+    .features {
+        padding: 0px 10px;
+    }
+
+    .features .home-card {
+        height: 15rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .hero {
+        padding: 50px 0;
+        background-position: left;
+    }
+
+    .about {
+        padding: 50px 8px;
+    }
+
+    .banner {
+        padding: 100px 8px;
+    }
+
+    .features .home-card {
+        height: 18rem;
+    }
+}
