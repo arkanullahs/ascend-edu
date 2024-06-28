@@ -11,5 +11,9 @@
             "src": "/(.*)",
             "dest": "/bin/www"
         }
-    ]
+    ],
+    "env": {
+        "MONGO_URI": "mongodb+srv://arkanullahsaad:autopass@thinkbase.ltnfpgl.mongodb.net/?retryWrites=true&w=majority&appName=ThinkBase",
+        "PORT": "5001"
+    }
 }
