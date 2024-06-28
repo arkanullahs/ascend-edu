@@ -1,7 +1,4 @@
 {
     "version": 2,
-    "name": "client",
-    "env": {
-        "REACT_APP_API_URL": "https://ascend-edu.vercel.app/api"
-    }
+    "name": "client"
 }
