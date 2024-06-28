@@ -1,6 +1,6 @@
 const cors = require('cors')
 
-const whitelist = [process.env.DOMAIN_REMOTE, process.env.DOMAIN_LOCAL, 'http://localhost:3000', 'https://ascend-edu-f3de.vercel.app/']
+const whitelist = [process.env.DOMAIN_REMOTE, process.env.DOMAIN_LOCAL, 'http://localhost:3000', 'https://ascend-edu-f3de.vercel.app']
 
 
 
