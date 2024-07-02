@@ -5,14 +5,13 @@ import { Container, Row, Carousel, Col, Image } from 'react-bootstrap';
 import './Home.css';
 import RandomCard from './Random-card';
 import Loader from '../../shared/Spinner/Loader';
-
 import Hero from './Hero';
 import Features from './Features';
 import Banner from './Banner';
+import Main from '../Main'; // Import the Main component
 
 const Home = (props) => {
   const coursesService = new CoursesService();
-
   const [courses, setCourses] = useState(null);
 
   useEffect(() => {
@@ -26,13 +25,16 @@ const Home = (props) => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      { }
+      {/* Render the Main component */}
+      <Main />
+
+      {/* Hero Section */}
       <Hero title='Aspire for more' p1='Learning keeps you in the lead.' p2='Get in-demand skills to impress anyone.' />
 
-      { }
+      {/* Features Section */}
       <Features />
 
-      { }
+      {/* Carousel Section */}
       <Container>
         <section className="carousel-section mt-5">
           <h2 className="mt-5 mb-5 text-center">Explore our course according to your need</h2>
@@ -60,10 +62,10 @@ const Home = (props) => {
         </section>
       </Container>
 
-      { }
+      {/* Banner Section */}
       <Banner title='Make the most of your online learning experience' text='Our teachers will help you learn while staying home.' />
 
-      { }
+      {/* About Us Section */}
       <section className="container-fluid about">
         <Container>
           <Row className="d-flex align-items-center">
