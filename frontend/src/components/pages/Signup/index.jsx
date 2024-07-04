@@ -25,6 +25,7 @@ const Signup = () => {
 			history.push("/login");
 			console.log(res.message);
 		} catch (error) {
+			console.error("Error details:", error);
 			if (
 				error.response &&
 				error.response.status >= 400 &&
