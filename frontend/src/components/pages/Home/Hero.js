@@ -5,6 +5,10 @@ import './Hero.css';
 const Hero = () => {
   const history = useHistory();
 
+  const handleStartTeaching = () => {
+    history.push('/login');
+  };
+
   return (
     <section className="hero">
       <div className="container">
@@ -12,7 +16,7 @@ const Hero = () => {
           <h1 className="hero-title">The All-in-One Online Course Platform</h1>
           <p className="hero-subtitle">Launch your own education empire in minutes.</p>
           <div className="hero-actions">
-            <button className="btn btn-primary">Start Teaching Today</button>
+            <button className="btn btn-primary" onClick={handleStartTeaching}>Start Teaching Today</button>
             <button className="btn btn-secondary" onClick={() => history.push('/courses')}>Take a Tour</button>
           </div>
         </div>
