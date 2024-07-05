@@ -28,6 +28,7 @@
     text-decoration: none;
     transition: color 0.3s;
     position: relative;
+    cursor: pointer; /* Added for cursor pointer */
 }
 
 .nav-icon .nav-text {
@@ -49,6 +50,7 @@
 
 .nav-link {
     display: none;
+    cursor: pointer; /* Added for cursor pointer */
 }
 
 @media (max-width: 767px) {
