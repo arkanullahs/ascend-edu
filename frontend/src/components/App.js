@@ -34,7 +34,7 @@ class App extends Component {
         <main>
           <AnimatePresence>
             <Switch>
-              <Route exact path="/" render={props => token ? <Home {...props} /> : <Redirect to="/" />} />
+              <Route exact path="/" render={props => token ? <Home {...props} /> : <Redirect to="/login" />} />
               <Route exact path="/courses" render={props => token ? <CoursesList {...props} /> : <Redirect to="/login" />} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
