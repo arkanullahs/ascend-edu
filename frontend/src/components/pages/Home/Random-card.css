@@ -31,6 +31,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    transition: filter 0.3s, transform 0.3s;
 }
 
 .random-card:hover {
@@ -38,7 +39,7 @@
 }
 
 .random-card:hover img {
-    filter: brightness(1.2) blur(5px);
+    filter: brightness(1.2);
     transform: scale(1.05);
 }
 
@@ -58,16 +59,6 @@
     color: #333;
     margin: 0;
     transition: color 0.3s, transform 0.3s;
-    text-decoration: none;
-}
-
-.random-title.card-title a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.random-title.card-title a:hover {
-    color: #007bff;
 }
 
 .random-title:hover {

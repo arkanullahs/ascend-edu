@@ -1,12 +1,12 @@
-.courses-hero{
+.courses-hero {
     background-image: url("https://res.cloudinary.com/dodneiokm/image/upload/v1608205837/project3-ironhack/portrait-young-pretty-woman-sitting-table-black-shirt-working-laptop-co-working-office_aufbet.jpg");
-    padding:10px 0;
+    padding: 10px 0;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-.courses-hero h1{
+.courses-hero h1 {
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -.02rem;
@@ -14,46 +14,53 @@
     text-shadow: 2px 1px 1px #fff;
 }
 
-.courses-hero p{
+.courses-hero p {
     letter-spacing: -.02rem;
     line-height: 1.3em;
     font-size: 1.4rem;
     text-shadow: 2px 1px 1px #fff;
 }
 
-.courses-hero .heading{
-    margin-top:300px;
+.courses-hero .heading {
+    margin-top: 300px;
 }
 
-.courses-list{
-    margin-top:50px
+.courses-list {
+    margin-top: 50px;
 }
 
 @media (max-width: 767px) {
-
     .courses-hero .heading {
         text-align: center;
-        margin-top:150px;
+        margin-top: 150px;
     }
 }
 
 @media (max-width: 575px) {
-    .courses-hero{
+    .courses-hero {
         margin: 0;
     }
 
-    .courses-hero .heading{
-        margin-top:0px;
+    .courses-hero .heading {
+        margin-top: 0px;
     }
 
-    .courses-hero h1{
+    .courses-hero h1 {
         font-size: 3.5rem;
     }
 
-    .courses-hero p{
+    .courses-hero p {
         letter-spacing: 0rem;
         line-height: 1em;
         font-size: 1.4rem;
-        
     }
+}
+
+.course-card {
+    width: 100%; /* Ensures the card takes the full width of the column */
+}
+
+.course-card .card-img-top {
+    width: 100%;
+    height: auto;
 }
