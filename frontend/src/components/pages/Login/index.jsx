@@ -35,7 +35,7 @@ const Login = () => {
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
+						<h1>Login to Access Courses</h1>
 						<input
 							type="email"
 							placeholder="Email"

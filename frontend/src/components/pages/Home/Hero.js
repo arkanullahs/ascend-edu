@@ -12,8 +12,8 @@ const Hero = () => {
           <h1 className="hero-title">The All-in-One Online Course Platform</h1>
           <p className="hero-subtitle">Launch your own education empire in minutes.</p>
           <div className="hero-actions">
-            <button className="btn btn-primary">Start Teaching Today</button>
-            <button className="btn btn-secondary" onClick={() => history.push('/courses')}>Take a Tour</button>
+            <button className="btn btn-primary" onClick={() => history.push('/signup')}>Register Now as a Teacher</button>
+            <button className="btn btn-secondary" onClick={() => history.push('/courses')}>Check the Courses</button>
           </div>
         </div>
         <div className="hero-image">
