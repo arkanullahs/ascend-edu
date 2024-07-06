@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { IoMdHome, IoMdBook, IoMdSearch } from 'react-icons/io';
+import { IoMdSearch } from 'react-icons/io';
 import logo from './logo3.png';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -34,6 +34,7 @@ const Navigation = () => {
     }, []);
 
     const handleNavItemClick = () => {
+        // Handle click actions if needed
     };
 
     return (
@@ -54,27 +55,13 @@ const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    { }
-                    <Link to="/" className={`nav-icon d-none d-md-block ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                        <IoMdHome size={24} className="ios-icon" />
-                        <span className="nav-text">Home</span>
-                    </Link>
-                    <Link to="/courses" className={`nav-icon d-none d-md-block ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                        <IoMdBook size={24} className="ios-icon" />
-                        <span className="nav-text">Courses</span>
-                    </Link>
-                    <Link to="/courses" className={`nav-icon d-none d-md-block ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                    {/* Search Button */}
+                    <Link to="/courses" className={`nav-icon ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
                         <IoMdSearch size={24} className="ios-icon" />
                         <span className="nav-text">Search</span>
                     </Link>
 
-                    { }
-                    <Link to="/" className={`nav-link d-md-none ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                        Home
-                    </Link>
-                    <Link to="/courses" className={`nav-link d-md-none ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                        Courses
-                    </Link>
+                    {/* Mobile View Links */}
                     <Link to="/courses" className={`nav-link d-md-none ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
                         Search
                     </Link>
