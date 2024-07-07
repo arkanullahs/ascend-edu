@@ -20,7 +20,8 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://ascend-edu.vercel.app/api/users";
+			const url = "https://ascend-edu-backend.onrender.com/api/users"
+			//const url = "https://ascend-edu.vercel.app/api/users";
 			const { data: res } = await axios.post(url, data);
 			history.push("/login");
 			console.log(res.message);
