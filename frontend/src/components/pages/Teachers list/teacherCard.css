@@ -1,0 +1,74 @@
+.teacher-card {
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(252, 255, 233, .08);
+    height: 340px;
+    border-radius: 10px;
+    background: #fdfdf6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #f9feff, #fdfdf6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #f9feff, #fdfdf6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow: hidden;
+}
+
+.teacher-card-img {
+    width:130px;
+    height:130px;
+    object-fit: cover;
+}  
+
+.rounded-circle{
+    border: 1px solid #abadaf ;
+    border-radius: 50%!important;
+}
+
+.teacher-title{
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 1rem;
+}
+
+.details{
+    font-family: Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 0.95rem;
+}
+
+.teacher-card .card-body{
+    margin-top: .9em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@media (max-width: 1200px) {
+  .teacher-card .card-body {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .teacher-card .card-body {
+    padding: 1.25em 15px;
+  }
+  .teacher-card .teacher-view-more {
+    font-size: .9em;
+  }
+  .teacher-card .details {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .teacher-card .card-body {
+    padding: 20px;
+  }
+  .teacher-card .teacher-view-more {
+    font-size: 1em;
+  }
+  .teacher-card .details {
+    font-size: 1rem;
+  }
+}
