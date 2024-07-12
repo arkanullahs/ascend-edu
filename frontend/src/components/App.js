@@ -12,33 +12,73 @@ import CoursesList from './pages/Courses-list/Courses-list';
 import CourseDetails from './pages/Course-details/Course-details';
 
 class App extends Component {
-
   constructor() {
     super();
     this.state = {
       loggedInUser: undefined,
-      teacher: undefined,
+      userRole: undefined,
       showToast: false,
       toastText: '',
       toastColor: ''
     };
   }
 
-  render() {
+  componentDidMount() {
     const token = localStorage.getItem("token");
+    const userRole = localStorage.getItem("userRole");
+    if (token && userRole) {
+      this.setState({ loggedInUser: true, userRole: userRole });
+    }
+  }
+
+  setUserRole = (role) => {
+    this.setState({ userRole: role });
+    localStorage.setItem("userRole", role);
+  }
+
+  render() {
+    const { loggedInUser, userRole } = this.state;
+    const token = localStorage.getItem("token");
+
+    const PrivateRoute = ({ component: Component, role, ...rest }) => (
+      <Route
+        {...rest}
+        render={(props) =>
+          token && (!role || userRole === role) ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to="/login" />
+          )
+        }
+      />
+    );
 
     return (
       <>
-        <Navigation />
+        <Navigation userRole={userRole} />
 
         <main>
           <AnimatePresence>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/courses" render={props => token ? <CoursesList {...props} /> : <Redirect to="/login" />} />
+              <PrivateRoute exact path="/courses" component={CoursesList} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/courses/:course_id" render={props => token ? <CourseDetails {...props} /> : <Redirect to="/login" />} />
+              <Route
+                exact
+                path="/login"
+                render={(props) => <Login {...props} setUserRole={this.setUserRole} />}
+              />
+              <PrivateRoute exact path="/courses/:course_id" component={CourseDetails} />
+              <PrivateRoute
+                path="/teacher-dashboard"
+                component={CoursesList}  // Temporary placeholder
+                role="teacher"
+              />
+              <PrivateRoute
+                path="/student-dashboard"
+                component={CoursesList}  // Temporary placeholder
+                role="student"
+              />
               <Route path="*" render={() => <Redirect to="/" />} />
             </Switch>
           </AnimatePresence>

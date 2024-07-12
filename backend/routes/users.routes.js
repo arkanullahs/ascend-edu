@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, validate } = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const auth = require("../middleware/auth.middleware");
 
 router.post("/", async (req, res) => {
 	try {
@@ -19,6 +20,17 @@ router.post("/", async (req, res) => {
 		console.error("Error creating user:", error);
 		res.status(500).send({ message: "Internal Server Error" });
 	}
+});
+// New route for getting user profile (protected, any authenticated user)
+router.get("/profile", auth(), async (req, res) => {
+	const user = await User.findById(req.user._id).select("-password");
+	res.send(user);
+});
+
+// New route for teacher-only action (create a course)
+router.post("/courses", auth("teacher"), async (req, res) => {
+	// Logic for creating a course
+	res.send("Course created successfully");
 });
 
 module.exports = router;
