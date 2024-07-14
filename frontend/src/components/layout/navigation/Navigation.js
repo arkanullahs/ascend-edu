@@ -62,6 +62,9 @@ const Navigation = () => {
                     </Link>
 
                     {/* Mobile View Links */}
+                    <Link to="/teachers" className={`nav-link d-md-none ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                        Teachers
+                    </Link>
                     <Link to="/courses" className={`nav-link d-md-none ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
                         Search
                     </Link>
