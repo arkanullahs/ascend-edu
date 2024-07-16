@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import CoursesService from '../../../service/courses.service';
 import { Container, Row, Carousel, Col, Image } from 'react-bootstrap';
 import './Home.css';
-import RandomCard from './Random-card';
 import Loader from '../../shared/Spinner/Loader';
 
 import Hero from './Hero';
@@ -15,55 +14,25 @@ const Home = (props) => {
 
   const [courses, setCourses] = useState(null);
 
-  useEffect(() => {
+  /*useEffect(() => {
     coursesService.getRandomCourses()
       .then(response => setCourses(response.data))
       .catch(() => {
         props.history.push('/courses');
         props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da');
       });
-  }, []);
+  }, []);*/
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      { }
       <Hero title='Aspire for more' p1='Learning keeps you in the lead.' p2='Get in-demand skills to impress anyone.' />
 
-      { }
       <Features />
 
-      { }
-      <Container>
-        <section className="carousel-section mt-5">
-          <h2 className="mt-5 mb-5 text-center">Explore our course according to your need</h2>
 
-          {courses ? (
-            <Carousel className='carousel' controls={false} interval={3000} pause={false} slide>
-              <Carousel.Item>
-                <Row>
-                  {[...courses].slice(0, 4).map(elm => (
-                    <RandomCard key={elm._id} {...elm} />
-                  ))}
-                </Row>
-              </Carousel.Item>
-              <Carousel.Item>
-                <Row>
-                  {[...courses].slice(4, 8).map(elm => (
-                    <RandomCard key={elm._id} {...elm} />
-                  ))}
-                </Row>
-              </Carousel.Item>
-            </Carousel>
-          ) : (
-            <Loader />
-          )}
-        </section>
-      </Container>
 
-      { }
       <Banner title='Make the most of your online learning experience' text='Our teachers will help you learn while staying home.' />
 
-      { }
       <section className="container-fluid about">
         <Container>
           <Row className="d-flex align-items-center">
