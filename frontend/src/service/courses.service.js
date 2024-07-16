@@ -7,8 +7,8 @@ export default class CourseService {
 
     constructor() {
         this.apiHandler = axios.create({
-            //baseURL: `${ env.REACT_APP_API_URL }/courses`,
-            baseURL: `https://ascend-edu.vercel.app/api/courses`,
+            baseURL: `${env.REACT_APP_API_URL}/courses`,
+            //baseURL: `https://ascend-edu.vercel.app/api/courses`,
             withCredentials: true
         })
     }
