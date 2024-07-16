@@ -1,24 +1,33 @@
-const router = require("express").Router();
-const { User, validate } = require("../models/user.model");
-const bcrypt = require("bcrypt");
+const express = require('express');
+const bcrypt = require('bcrypt');
+const User = require('../models/user.model');
+const router = express.Router();
 
-router.post("/", async (req, res) => {
-	try {
-		const { error } = validate(req.body);
-		if (error) return res.status(400).send({ message: error.details[0].message });
+router.post('/', async (req, res) => {
+	let user = await User.findOne({ email: req.body.email });
+	if (user) return res.status(400).send('User already registered.');
 
-		const user = await User.findOne({ email: req.body.email });
-		if (user) return res.status(409).send({ message: "User with given email already exists!" });
+	user = new User({
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		email: req.body.email,
+		password: req.body.password,
+		role: req.body.role
+	});
 
-		const salt = await bcrypt.genSalt(Number(process.env.SALT));
-		const hashPassword = await bcrypt.hash(req.body.password, salt);
+	const salt = await bcrypt.genSalt(10);
+	user.password = await bcrypt.hash(user.password, salt);
 
-		await new User({ ...req.body, password: hashPassword }).save();
-		res.status(201).send({ message: "User created successfully" });
-	} catch (error) {
-		console.error("Error creating user:", error);
-		res.status(500).send({ message: "Internal Server Error" });
-	}
+	await user.save();
+
+	const token = user.generateAuthToken();
+	res.header('x-auth-token', token).send({
+		_id: user._id,
+		firstName: user.firstName,
+		lastName: user.lastName,
+		email: user.email,
+		role: user.role
+	});
 });
 
 module.exports = router;
