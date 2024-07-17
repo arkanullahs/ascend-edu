@@ -1,12 +1,19 @@
 import React from 'react';
 import CourseForm from '../Course-Form/CourseForm';
+import { Link } from 'react-router-dom';
+import './CourseList.css'; // Import the CSS file for styling
 
 const CourseList = ({ courses, onUpdate, onDelete, onEnroll, enrolledCourses, showVideos }) => {
     return (
-        <div>
+        <div className="course-list">
             {courses.map(course => (
-                <div key={course._id}>
-                    <h3>{course.title}</h3>
+                <div className="course-card" key={course._id}>
+                    <h3>
+                        <Link to={`/courses/getOneCourse/${course._id}`} style={{ textDecoration: 'none', color: 'blue' }}>
+                            {course.title}
+                        </Link>
+
+                    </h3>
                     <p>{course.description}</p>
                     <p>Category: {course.category}</p>
                     <p>Difficulty: {course.difficultyLevel}</p>
