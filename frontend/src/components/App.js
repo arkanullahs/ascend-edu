@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Navigation from './layout/navigation/Navigation';
 import Footer from './layout/Footer/Footer';
 import Home from './pages/Home/Home';
-import CoursesList from './pages/Courses-list/Courses-list';
-import CourseDetails from './pages/Course-details/Course-details';
+import CoursesList from './pages/Course-List/CourseList';
+import CourseDetails from './pages/Course-Info/CourseDetails';
 import Login from "./pages/Login/index";
 import Signup from "./pages/Signup/index";
 import TeacherDashboard from './pages/Teacher-Dashboard/TeacherDashboard';
@@ -24,9 +24,10 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/courses" component={CoursesList} role="student" />
-          <PrivateRoute exact path="/courses/:course_id" component={CourseDetails} role="student" />
           <PrivateRoute path="/teacher-dashboard" component={TeacherDashboard} role="teacher" />
           <PrivateRoute path="/student-dashboard" component={StudentDashboard} role="student" />
+          <PrivateRoute exact path="/courses/getOneCourse/:courseId" component={CourseDetails} role="student" />
+
           <Redirect to="/" />
         </Switch>
       </main>

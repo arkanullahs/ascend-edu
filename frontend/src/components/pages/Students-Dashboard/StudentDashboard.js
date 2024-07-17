@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseList from '../Course-List/CourseList';
+import './StudentDashboard.css'; // Import the CSS file for styling
 
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
@@ -55,7 +56,7 @@ const StudentDashboard = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div>
+        <div className="student-dashboard">
             <h1>Student Dashboard</h1>
             <h2>All Courses</h2>
             <CourseList
