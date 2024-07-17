@@ -23,10 +23,10 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/courses" component={CoursesList} />
-          <PrivateRoute exact path="/courses/:course_id" component={CourseDetails} />
-          <PrivateRoute path="/teacher-dashboard" component={TeacherDashboard} />
-          <PrivateRoute path="/student-dashboard" component={StudentDashboard} />
+          <PrivateRoute exact path="/courses" component={CoursesList} role="student" />
+          <PrivateRoute exact path="/courses/:course_id" component={CourseDetails} role="student" />
+          <PrivateRoute path="/teacher-dashboard" component={TeacherDashboard} role="teacher" />
+          <PrivateRoute path="/student-dashboard" component={StudentDashboard} role="student" />
           <Redirect to="/" />
         </Switch>
       </main>
@@ -35,5 +35,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
