@@ -58,7 +58,6 @@ const TeacherDashboard = () => {
         }
     };
 
-
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
 
@@ -70,6 +69,7 @@ const TeacherDashboard = () => {
                 courses={courses}
                 onUpdate={handleUpdateCourse}
                 onDelete={handleDeleteCourse}
+                showVideos={true} // Ensure videos are shown
             />
         </div>
     );

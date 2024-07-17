@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, RadarChart, Radar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Cell } from 'recharts';
-import "./Home.css"
+
 const Home = () => {
   const lineChartData = [
     { name: 'Jan', students: 4000, courses: 2400 },
@@ -38,11 +38,13 @@ const Home = () => {
   ];
   const companyLogos = [
     { name: 'Google', logo: 'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png' },
-    { name: 'Facebook', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png' },
+    { name: 'Facebook', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png' },
     { name: 'Tesla', logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png' },
-    { name: 'HU', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Harvard_University_logo.svg' },
-    { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1920px-Microsoft_logo_%282012%29.svg.png' },
-
+    { name: 'BUET', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/da/BUET_LOGO.svg/180px-BUET_LOGO.svg.png' },
+    { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
+    { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+    { name: 'Apple', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+    { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
   ];
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
@@ -52,7 +54,7 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0 }}
+          transition={{ duration: 0.8 }}
           className="hero-content"
         >
           <h1>বাংলাদেশ শিখবে, লাইভে!</h1>
@@ -63,29 +65,14 @@ const Home = () => {
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.2 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.0 }}
+          transition={{ duration: 0.8 }}
           className="hero-image"
         >
-          <img src="https://cdn.ostad.app/public/upload/2024-02-18T10-44-42.948Z-2dsdss.webp" alt="E-learning illustration" />
+          <img src="https://i.ibb.co/xM3yDXZ/hero.gif" alt="E-learning illustration" />
         </motion.div>
       </header>
-      <section className="trusted-by">
-        <h6>AS FEATURED IN</h6>
-        <div className="logo-container">
-          {companyLogos.map((company, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <img src={company.logo} alt={`${company.name} logo`} className="company-logo" />
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       <section className="features frosty-glass">
         <h2>Our Features</h2>
@@ -176,7 +163,23 @@ const Home = () => {
         </div>
       </section>
 
-
+      <section className="trusted-by frosty-glass">
+        <h2>Trusted By Industry Leaders</h2>
+        <div className="logo-container">
+          {companyLogos.map((company, index) => (
+            <motion.div
+              key={index}
+              className="logo-card frosty-card"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <img src={company.logo} alt={`${company.name} logo`} className="company-logo" />
+              <p>{company.name}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

@@ -36,7 +36,7 @@ const Banner = () => {
     <div className="banner">
       <h1 className="banner-heading">Our Metrics With Line Chart and Area Chart with Dummy Data</h1>
       <div className="chart-container">
-        {}
+        { }
         <div className="chart-card">
           <h2 className="chart-title">Line Chart</h2>
           <div className="chart-content">
@@ -57,7 +57,7 @@ const Banner = () => {
           </div>
         </div>
 
-        {}
+        { }
         <div className="chart-card">
           <h2 className="chart-title">Area Chart</h2>
           <div className="chart-content">

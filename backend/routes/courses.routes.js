@@ -2,6 +2,7 @@ const express = require('express');
 const auth = require('../middleware/auth');
 const Course = require('../models/course.model');
 const User = require('../models/user.model');
+const mongoose = require('mongoose');
 const router = express.Router();
 
 router.get('/', auth, async (req, res) => {
@@ -114,6 +115,25 @@ router.put('/:id', auth, async (req, res) => {
     }
 });
 
+router.get('/getOneCourse/:id', auth, async (req, res) => {
+    // Check if the user is a student
+    if (req.user.role !== 'student') {
+        return res.status(403).send('Access denied by chatro.');
+    }
 
+    // Validate the course ID
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        return res.status(400).send('Invalid course ID.');
+    }
+
+    try {
+        const course = await Course.findById(req.params.id);
+        if (!course) return res.status(404).send('Course not found.');
+        res.send(course);
+    } catch (error) {
+        console.error('Error fetching course:', error);
+        res.status(500).send('Error fetching course.');
+    }
+});
 
 module.exports = router;
