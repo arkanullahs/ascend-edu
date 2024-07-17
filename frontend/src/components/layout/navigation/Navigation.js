@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { IoMdSearch } from 'react-icons/io';
 import logo from './logo3.png';
@@ -10,6 +10,9 @@ import './Navigation.css';
 const Navigation = () => {
     const [scrolling, setScrolling] = useState(false);
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 767);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userRole, setUserRole] = useState('');
+    const history = useHistory();
 
     const handleScroll = () => {
         if (window.scrollY > window.innerHeight) {
@@ -27,11 +30,27 @@ const Navigation = () => {
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
 
+        // Check if user is logged in
+        const token = localStorage.getItem('token');
+        const role = localStorage.getItem('userRole');
+        if (token) {
+            setIsLoggedIn(true);
+            setUserRole(role);
+        }
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userRole');
+        setIsLoggedIn(false);
+        setUserRole('');
+        history.push('/');
+    };
 
     const handleNavItemClick = () => {
         // Handle click actions if needed
@@ -55,16 +74,33 @@ const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    {/* Search Button */}
-                    <Link to="/courses" className={`nav-icon ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                        <IoMdSearch size={24} className="ios-icon" />
-                        <span className="nav-text">Search</span>
-                    </Link>
-
-                    {/* Mobile View Links */}
-                    <Link to="/courses" className={`nav-link d-md-none ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                        Search
-                    </Link>
+                    {isLoggedIn ? (
+                        <>
+                            {userRole === 'teacher' ? (
+                                <Link to="/teacher-dashboard" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                    Dashboard
+                                </Link>
+                            ) : (
+                                <Link to="/student-dashboard" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                    Dashboard
+                                </Link>
+                            )}
+                            <Link to="/courses" className={`nav-icon ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                <IoMdSearch size={24} className="ios-icon" />
+                                <span className="nav-text">Search</span>
+                            </Link>
+                            <Nav.Link onClick={handleLogout} className={`${isMobileView ? 'mobile-view' : ''}`}>Logout</Nav.Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                Login
+                            </Link>
+                            <Link to="/signup" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -9,6 +9,7 @@ const Signup = () => {
 		lastName: "",
 		email: "",
 		password: "",
+		role: "student" // default role
 	});
 	const [error, setError] = useState("");
 	const history = useHistory();
@@ -20,8 +21,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://ascend-edu-backend.onrender.com/api/users"
-			//const url = "https://ascend-edu.vercel.app/api/users";
+			const url = "http://localhost:5000/api/users";
 			const { data: res } = await axios.post(url, data);
 			history.push("/login");
 			console.log(res.message);
@@ -87,6 +87,16 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+						<select
+							name="role"
+							onChange={handleChange}
+							value={data.role}
+							required
+							className={styles.input}
+						>
+							<option value="student">Student</option>
+							<option value="teacher">Teacher</option>
+						</select>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sign Up

@@ -15,14 +15,11 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://ascend-edu-backend.onrender.com/api/auth"
-			//const url = "https://ascend-edu.vercel.app/api/auth";
-			//const url = "http://localhost:5000/api/auth";
-			//const url = "https://ascend-edu.vercel.app/api/auth";
+			const url = "http://localhost:5000/api/auth";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			history.push("/");
-			window.location.reload(true);
+			localStorage.setItem("token", res.token);
+			localStorage.setItem("userRole", res.user.role);
+			history.push(res.user.role === 'teacher' ? "/teacher-dashboard" : "/student-dashboard");
 		} catch (error) {
 			if (
 				error.response &&
