@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const auth = require('../middleware/auth');
 const User = require('../models/user.model');
 const router = express.Router();
 
@@ -28,6 +28,18 @@ router.post('/', async (req, res) => {
 		email: user.email,
 		role: user.role
 	});
+});
+
+router.get('/enrolledCourses', auth, async (req, res) => {
+	try {
+		const user = await User.findById(req.user._id).populate('enrolledCourses');
+		if (!user) {
+			return res.status(404).send('User not found');
+		}
+		res.send(user.enrolledCourses);
+	} catch (error) {
+		res.status(500).send('Error fetching enrolled courses');
+	}
 });
 
 module.exports = router;

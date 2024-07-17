@@ -13,18 +13,16 @@ app.use(express.json());
 app.use(cors());
 
 // Database connection
-const mongoURI = process.env.MONGO_URI;
-
-mongoose.connect(mongoURI, {
+const mongoOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-}).then(() => {
-    console.log('Connected to MongoDB');
-}).catch(err => {
-    console.error('Error connecting to MongoDB:', err);
-});
+};
+const mongoURI = process.env.MONGO_URI;
+
+mongoose
+    .connect(process.env.MONGO_URI, mongoOptions)
+    .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
+    .catch(err => console.error('Error connecting to mongo', err));
 
 // Routes
 app.use("/api/users", userRoutes);
