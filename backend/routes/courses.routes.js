@@ -89,6 +89,31 @@ router.delete('/:id', auth, async (req, res) => {
         res.status(500).send('Error deleting course.');
     }
 });
+//edit a course
+router.put('/:id', auth, async (req, res) => {
+    if (req.user.role !== 'teacher') {
+        return res.status(403).send('Access denied.');
+    }
+
+    try {
+        const course = await Course.findById(req.params.id);
+        if (!course) {
+            return res.status(404).send('Course not found.');
+        }
+
+        if (course.teacher.toString() !== req.user._id) {
+            return res.status(403).send('You are not authorized to update this course.');
+        }
+
+        // Update course details
+        Object.assign(course, req.body);
+        await course.save();
+        res.send(course);
+    } catch (error) {
+        res.status(500).send('Error updating course.');
+    }
+});
+
 
 
 module.exports = router;
