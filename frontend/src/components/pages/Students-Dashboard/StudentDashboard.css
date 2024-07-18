@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 :root {
-    --color-primary: #7380ec;
+    --color-primary: #8e44ad; /* Updated primary color */
     --color-danger: #ff7782;
     --color-success: #41f1b6;
     --color-warning: #ffbb55;
@@ -12,11 +12,11 @@
     --color-dark-varient: #677483;
     --color-background: #f6f6f9;
 
-    --card-border-radius: 2rem;
+    --card-border-radius: 5px; /* Updated border radius */
     --border-radius-1: 0.4rem;
     --border-radius-2: 1.2rem;
 
-    --card-padding: 1.8rem;
+    --card-padding: 20px 30px; /* Updated padding */
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
@@ -127,18 +127,34 @@ b {
 }
 
 .course-card {
-    position: relative; /* Ensure the card is a positioned container */
+    position: relative;
     background: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
     width: calc(33.333% - 1rem);
-    /*background-image: url('Images/background.jpg'); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay; /* Ensure background image blends well */
-    opacity: 0.9; /* Adjust transparency */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Adjusted alignment */
+    opacity: 0.9;
+    overflow: hidden; /* Added to hide the overflow of the pseudo-element */
+}
+
+.course-card::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1;
+    transform: translate(50%, -50%);
+    width: 40%;
+    height: 40%;
+    /*background-image: url(https://static-00.iconduck.com/assets.00/angular-icon-1024x1024-k2q3ss9u.png);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    opacity: 0.7; /* Decreased opacity */
 }
 
 .course-card:hover {
@@ -147,38 +163,46 @@ b {
 
 .course-card h3 {
     margin-bottom: 0.5rem;
+    font-size: 18px; /* Adjusted font size */
+    font-weight: 600; /* Adjusted font weight */
+    color: var(--color-primary); /* Adjusted color */
 }
 
 .course-card p {
     margin-bottom: 1rem;
+    text-align: justify; /* Adjusted text alignment */
+    font-size: 16px; /* Adjusted font size */
+    font-weight: 400; /* Adjusted font weight */
 }
 
 .course-card button {
     background: var(--color-primary);
     color: var(--color-white);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-1);
+    border: 2px solid var(--color-primary); /* Added border */
+    padding: 9px 0; /* Adjusted padding */
+    border-radius: 5px; /* Adjusted border radius */
     cursor: pointer;
-    transition: background 300ms ease;
+    font-size: 18px; /* Adjusted font size */
+    font-weight: 400; /* Adjusted font weight */
+    transition: all 0.3s linear;
+    width: 100%;
 }
 
 .course-card button:hover {
     background: var(--color-dark);
+    color: var(--color-white);
 }
 
 .course-card .corner-image {
-    position: absolute; /* Position the image absolutely within the card */
-    bottom: 0; /* Align to the bottom */
-    right: 0; /* Align to the right */
-    width: 3rem; /* Adjust size as needed */
-    height: 3rem; /* Adjust size as needed */
-    border-radius: 50%; /* Ensure the image is round */
-    /*background-image: url('Images/bal.jpg'); /* Replace with your image path */
-    background-size: cover; /* Ensure the image covers the container */
-    background-position: center; /* Center the image */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
 }
-
 
 /* Loader and Error Styles */
 .loader,
