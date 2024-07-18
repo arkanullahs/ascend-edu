@@ -1,13 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-varient: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+.dark-theme {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-varient: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: .88rem;
+    background: linear-gradient(135deg, #7380ec, #ff7782);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: .87rem;
+}
+
+h4 {
+    font-size: .8rem;
+}
+
+h5 {
+    font-size: .77rem;
+}
+
+small {
+    font-size: .75rem;
+}
+
+.text-muted {
+    color: var(--color-info);
+}
+
+p {
+    color: var(--color-dark-varient);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+/* Student Dashboard Styles */
 .student-dashboard {
-    padding: 20px;
+    padding: 2rem;
 }
 
-.student-dashboard h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
+.student-dashboard h1,
 .student-dashboard h2 {
-    margin-top: 40px;
+    margin-bottom: 1rem;
+}
+
+/* Course List Styles */
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.course-card {
+    position: relative; /* Ensure the card is a positioned container */
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    width: calc(33.333% - 1rem);
+    /*background-image: url('Images/background.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Ensure background image blends well */
+    opacity: 0.9; /* Adjust transparency */
+}
+
+.course-card:hover {
+    box-shadow: none;
+}
+
+.course-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.course-card p {
+    margin-bottom: 1rem;
+}
+
+.course-card button {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    transition: background 300ms ease;
+}
+
+.course-card button:hover {
+    background: var(--color-dark);
+}
+
+.course-card .corner-image {
+    position: absolute; /* Position the image absolutely within the card */
+    bottom: 0; /* Align to the bottom */
+    right: 0; /* Align to the right */
+    width: 3rem; /* Adjust size as needed */
+    height: 3rem; /* Adjust size as needed */
+    border-radius: 50%; /* Ensure the image is round */
+    /*background-image: url('Images/bal.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the container */
+    background-position: center; /* Center the image */
+}
+
+
+/* Loader and Error Styles */
+.loader,
+.error {
     text-align: center;
+    margin: 2rem 0;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 12px;
+    }
+    .course-card {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+    .course-card {
+        width: 100%;
+    }
 }
