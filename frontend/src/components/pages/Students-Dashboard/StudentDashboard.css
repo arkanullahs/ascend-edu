@@ -194,6 +194,7 @@ b {
 }
 
 .course-card .corner-image {
+    background-image: url('https://static-00.iconduck.com/assets.00/angular-icon-1024x1024-k2q3ss9u.png');
     position: absolute;
     bottom: 0;
     right: 0;
@@ -202,6 +203,12 @@ b {
     border-radius: 50%;
     background-size: cover;
     background-position: center;
+}
+
+.course-card-angular::before {
+    
+    position: absolute;
+    right: 2;
 }
 
 /* Loader and Error Styles */

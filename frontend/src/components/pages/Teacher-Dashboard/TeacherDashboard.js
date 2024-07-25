@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseForm from '../Course-Form/CourseForm';
 import CourseList from '../Course-List/CourseList';
+import './TeacherDashboard.css';
 
 const TeacherDashboard = () => {
     const [courses, setCourses] = useState([]);

@@ -1,0 +1,253 @@
+/* TeacherDashboard.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1d2634;
+    color: #9e9ea4;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #070708;
+    margin-top: 20px;
+}
+
+.TeacherDashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.CourseForm {
+    margin-bottom: 30px;
+    background-color: #432637;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap between the form fields as needed */
+}
+
+form input,
+form textarea,
+form select {
+    flex: 1;
+    padding: 12px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #1d2634;
+    color: #9e9ea4;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #e223a9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.CourseForm input[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.CourseForm input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.CourseForm .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Responsive adjustments for CourseForm */
+
+@media screen and (max-width: 768px) {
+    .CourseForm {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .CourseForm input,
+    .CourseForm textarea,
+    .CourseForm select {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .CourseForm input[type="submit"] {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Other styles */
+.CourseList {
+    background-color: #263043;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.CourseList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.CourseList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #9e9ea4;
+}
+
+.CourseList li:last-child {
+    border-bottom: none;
+}
+
+.CourseList .course-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(158, 158, 164, 0.8);
+}
+
+.CourseList .course-actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.CourseList .course-actions .edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.CourseList .course-actions .delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.CourseList .course-actions .edit-btn:hover {
+    background-color: #45a049;
+}
+
+.CourseList .course-actions .delete-btn:hover {
+    background-color: #e53935;
+}
+
+/* Cards */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #263043;
+    color: rgba(14, 13, 13, 0.8);
+}
+
+.card:first-child {
+    background-color: #2962ff;
+}
+
+.card:nth-child(2) {
+    background-color: #ff6d00;
+}
+
+.card:nth-child(3) {
+    background-color: #2e7d32;
+}
+
+.card:nth-child(4) {
+    background-color: #d50000;
+}
+
+.card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-inner > .card_icon {
+    font-size: 25px;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 60px;
+    height: 300px;
+}
+
+/* Medium <= 992px */
+
+@media screen and (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 3fr;
+        grid-template-areas:
+            'header'
+            'main';
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    .menu-icon {
+        display: inline;
+    }
+
+    .sidebar-title > span {
+        display: inline;
+    }
+}
+
+/* Small <= 768px */
+
+@media screen and (max-width: 768px) {
+    .main-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+
+    .charts {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+    }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+    .header-left {
+        display: none;
+    }
+}
