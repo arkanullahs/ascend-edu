@@ -34,7 +34,7 @@ h1 {
 .form-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Adjust the gap between the form fields as needed */
+    gap: 20px; 
 }
 
 form input,
@@ -44,11 +44,28 @@ form select {
     padding: 12px;
     margin: 5px 0;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     box-sizing: border-box;
     font-size: 16px;
     background-color: #1d2634;
     color: #9e9ea4;
+}
+
+ form button {
+    margin-top: 20px; 
+    padding: 12px;
+    border: 1px solid #f1eeee;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #8e44ad;
+    color: #ececf3;
+    cursor: pointer;
+    flex: 1; 
+    height: 10;
+}
+
+button:hover {
+    background-color: #3a3f50;
 }
 
 form input:focus,
@@ -81,7 +98,6 @@ form select:focus {
     gap: 10px;
 }
 
-/* Responsive adjustments for CourseForm */
 
 @media screen and (max-width: 768px) {
     .CourseForm {
@@ -159,6 +175,7 @@ form select:focus {
 .CourseList .course-actions .delete-btn:hover {
     background-color: #e53935;
 }
+
 
 /* Cards */
 .card {
