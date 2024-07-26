@@ -21,7 +21,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5000/api/users";
+			const url = "https://ascend-edu-server.onrender.com/api/users";
 			const { data: res } = await axios.post(url, data);
 			history.push("/login");
 			console.log(res.message);

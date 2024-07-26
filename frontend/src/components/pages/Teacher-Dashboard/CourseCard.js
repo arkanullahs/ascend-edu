@@ -32,23 +32,25 @@ const CourseCard = ({ course, onUpdate, onDelete }) => {
 
     return (
         <div className="dashboard-card course-card">
-            <div className="course-card-header">
-                <img className="pic" src={course.imageUrl} />
-                <h2>{course.title}</h2>
-                <div className="course-actions">
+            <div className="course-card-image">
+                <img src={course.imageUrl} alt={course.title} />
+                <div className="course-card-overlay">
                     <button onClick={handleEdit} className="action-btn edit-btn"><FaEdit /></button>
                     <button onClick={handleDelete} className="action-btn delete-btn"><FaTrash /></button>
                 </div>
             </div>
-            <p className="course-description">{course.description}</p>
-            <div className="course-meta">
-                <div className="meta-item"><FaUsers /> 0 students</div>
-                <div className="meta-item"><FaClock /> {course.duration} hours</div>
-                <div className="meta-item"><FaDollarSign /> {course.price}</div>
-            </div>
-            <div className="course-tags">
-                <span className="course-category">{course.category}</span>
-                <span className="course-difficulty">{course.difficultyLevel}</span>
+            <div className="course-card-content">
+                <h2 className="course-title">{course.title}</h2>
+                <p className="course-description">{course.description}</p>
+                <div className="course-meta">
+                    <div className="meta-item"><FaUsers /> 0 students</div>
+                    <div className="meta-item"><FaClock /> {course.duration} hours</div>
+                    <div className="meta-item"><FaDollarSign /> {course.price}</div>
+                </div>
+                <div className="course-tags">
+                    <span className="course-category">{course.category}</span>
+                    <span className="course-difficulty">{course.difficultyLevel}</span>
+                </div>
             </div>
         </div>
     );

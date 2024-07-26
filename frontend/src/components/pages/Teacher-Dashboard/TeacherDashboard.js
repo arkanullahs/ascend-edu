@@ -17,7 +17,7 @@ const TeacherDashboard = () => {
 
     const fetchCourses = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/courses/teacher', {
+            const response = await axios.get('https://ascend-edu-server.onrender.com/api/courses/teacher', {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(response.data);
@@ -30,7 +30,7 @@ const TeacherDashboard = () => {
 
     const handleAddCourse = async (courseData) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/courses', courseData, {
+            const response = await axios.post('https://ascend-edu-server.onrender.com/api/courses', courseData, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses([...courses, response.data]);
@@ -42,7 +42,7 @@ const TeacherDashboard = () => {
 
     const handleUpdateCourse = async (id, courseData) => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/courses/${id}`, courseData, {
+            const response = await axios.put(`https://ascend-edu-server.onrender.com/api/courses/${id}`, courseData, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(courses.map(course => course._id === id ? response.data : course));
@@ -53,7 +53,7 @@ const TeacherDashboard = () => {
 
     const handleDeleteCourse = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/courses/${id}`, {
+            await axios.delete(`https://ascend-edu-server.onrender.com/api/courses/${id}`, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(courses.filter(course => course._id !== id));
