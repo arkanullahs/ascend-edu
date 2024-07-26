@@ -24,9 +24,11 @@ const CourseCard = ({ course, onUpdate, onDelete }) => {
     if (isEditing) {
         return (
             <div className="dashboard-card form-card">
-                <h2>Edit Course</h2>
-                <CourseForm onSubmit={handleUpdate} initialData={course} />
-                <button className="cancel-btn" onClick={() => setIsEditing(false)}>Cancel</button>
+                <CourseForm
+                    onSubmit={handleUpdate}
+                    initialData={course}
+                    onCancel={() => setIsEditing(false)}
+                />
             </div>
         );
     }
