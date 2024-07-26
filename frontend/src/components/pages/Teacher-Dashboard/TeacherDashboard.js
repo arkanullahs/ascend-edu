@@ -102,7 +102,6 @@ const TeacherDashboard = () => {
 
                     {showAddCourse && (
                         <div className="dashboard-card form-card">
-                            <h2><FaPlus /> Add New Course</h2>
                             <CourseForm onSubmit={handleAddCourse} />
                         </div>
                     )}
