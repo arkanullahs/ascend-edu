@@ -2,12 +2,14 @@
     background-color: transparent;
     box-shadow: none;
     border-bottom: none;
-    transition: top 0.3s;
+    transition: all 0.3s;
     z-index: 1000;
+    padding: 15px 0;
 }
 
-.navbar.hidden {
-    top: -100px;
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
@@ -18,62 +20,37 @@
     text-decoration: none;
 }
 
-.nav-icon {
-    margin: 0 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav-link {
     color: #333;
-    font-size: 1.5rem;
-    text-decoration: none;
+    margin: 0 10px;
     transition: color 0.3s;
-    position: relative;
 }
 
-.nav-icon .nav-text {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-}
-
-.nav-icon:hover .nav-text {
-    display: block;
+.nav-link:hover {
+    color: #1890ff;
 }
 
 .navbar.mobile-view {
     background-color: #fff;
 }
 
-.nav-link {
-    display: inline-block;
-}
-
 @media (max-width: 767px) {
-    .border-top {
-        border-top: 1px solid #ced4da !important;
+    .navbar {
+        padding: 10px 0;
     }
 
-    .padding-top {
-        padding-top: 10px;
-    }
-
-    #basic-navbar-nav {
-        margin-top: 10px;
-    }
-
-    .nav-icon {
-        display: none;
+    .navbar-collapse {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
     }
 
     .nav-link {
-        display: block;
-        padding: 0.5rem 1rem;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
     }
 
-    .navbar.mobile-view {
-        background-color: #fff;
+    .nav-link:last-child {
+        border-bottom: none;
     }
 }

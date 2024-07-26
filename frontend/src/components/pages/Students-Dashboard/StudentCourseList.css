@@ -27,7 +27,7 @@
     color: #0056b3;
 }
 
-.course-card button {
+.course-card .button2 {
     background: #007bff;
     border: none;
     color: #fff;
@@ -37,6 +37,6 @@
     transition: background 0.2s;
 }
 
-.course-card button:hover {
+.course-card .button2:hover {
     background: #0056b3;
 }

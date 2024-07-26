@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FaEdit, FaTrash, FaUsers, FaClock, FaDollarSign } from 'react-icons/fa';
+import { MdEdit, MdDelete, MdPeople, MdAccessTime, MdAttachMoney } from 'react-icons/md';
 import CourseForm from '../Teacher-Course-Form/TeacherCourseForm';
+import './CourseCard.css';
 
 const CourseCard = ({ course, onUpdate, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -34,18 +35,22 @@ const CourseCard = ({ course, onUpdate, onDelete }) => {
         <div className="dashboard-card course-card">
             <div className="course-card-image">
                 <img src={course.imageUrl} alt={course.title} />
-                <div className="course-card-overlay">
-                    <button onClick={handleEdit} className="action-btn edit-btn"><FaEdit /></button>
-                    <button onClick={handleDelete} className="action-btn delete-btn"><FaTrash /></button>
+                <div className="course-card-actions">
+                    <button onClick={handleEdit} className="edit-btn" aria-label="Edit course">
+                        <MdEdit />
+                    </button>
+                    <button onClick={handleDelete} className="delete-btn" aria-label="Delete course">
+                        <MdDelete />
+                    </button>
                 </div>
             </div>
             <div className="course-card-content">
                 <h2 className="course-title">{course.title}</h2>
                 <p className="course-description">{course.description}</p>
                 <div className="course-meta">
-                    <div className="meta-item"><FaUsers /> 0 students</div>
-                    <div className="meta-item"><FaClock /> {course.duration} hours</div>
-                    <div className="meta-item"><FaDollarSign /> {course.price}</div>
+                    <div className="meta-item"><MdPeople /> {course.students || 0} students</div>
+                    <div className="meta-item"><MdAccessTime /> {course.duration} hours</div>
+                    <div className="meta-item"><MdAttachMoney /> {course.price}</div>
                 </div>
                 <div className="course-tags">
                     <span className="course-category">{course.category}</span>

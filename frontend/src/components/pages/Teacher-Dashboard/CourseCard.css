@@ -1,0 +1,169 @@
+/* CourseCard.css */
+.course-card {
+    background-color: #fbf9f4;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.course-card-image {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.course-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    /* Rounded borders on all sides */
+}
+
+.course-card-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Unique styles for action buttons */
+.course-card .action-btn {
+    background-color: #f1f1f1;
+    /* Light background color */
+    border: none;
+    border-radius: 50%;
+    /* Rounded borders */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #616161;
+    /* Default icon color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.course-card .action-btn:hover {
+    background-color: #e0e0e0;
+    /* Slightly darker on hover */
+}
+
+.course-card .edit-btn {
+    background-color: #e3f2fd;
+    /* Light blue */
+    border-radius: 10px;
+    border: none;
+    padding-bottom: 5%;
+
+}
+
+.course-card .edit-btn:hover {
+    background-color: #bbdefb;
+    /* Darker blue on hover */
+}
+
+.course-card .edit-btn svg {
+    color: #0d47a1;
+    /* Dark blue icon color */
+}
+
+.course-card .edit-btn:hover svg {
+    color: #0d47a1;
+    /* Dark blue icon color on hover */
+}
+
+.course-card .delete-btn {
+    background-color: #ffebee;
+    /* Light red */
+    border-radius: 10px;
+    border: none;
+    padding-bottom: 5%;
+}
+
+.course-card .delete-btn:hover {
+    background-color: #ffcdd2;
+    /* Darker red on hover */
+}
+
+.course-card .delete-btn svg {
+    color: #b71c1c;
+    /* Dark red icon color */
+}
+
+.course-card .delete-btn:hover svg {
+    color: #b71c1c;
+    /* Dark red icon color on hover */
+}
+
+.course-card-content {
+    padding: 20px;
+}
+
+.course-title {
+    margin: 0 0 15px 0;
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.course-description {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #666;
+}
+
+.course-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.course-category,
+.course-difficulty {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.course-category {
+    background-color: #e6f7ff;
+    color: #1890ff;
+}
+
+.course-difficulty {
+    background-color: #fff7e6;
+    color: #fa8c16;
+}

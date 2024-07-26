@@ -34,12 +34,12 @@ const CourseList = ({ courses, onUpdate, onDelete, onEnroll, enrolledCourses, sh
                     {onUpdate && onDelete && (
                         <>
                             <CourseForm onSubmit={(data) => onUpdate(course._id, data)} initialData={course} />
-                            <button onClick={() => onDelete(course._id)}>Delete Course</button>
+                            <button className='button2' onClick={() => onDelete(course._id)}>Delete Course</button>
                         </>
                     )}
 
                     {onEnroll && !enrolledCourses.some(c => c._id === course._id) && (
-                        <button onClick={() => onEnroll(course._id)}>Enroll</button>
+                        <button className='button2' onClick={() => onEnroll(course._id)}>Enroll</button>
                     )}
                 </div>
             ))}

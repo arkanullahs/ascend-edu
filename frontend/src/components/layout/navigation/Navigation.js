@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { IoMdSearch } from 'react-icons/io';
-import logo from './logo3.png';
 import { Navbar, Nav } from 'react-bootstrap';
-
+import logo from './logo3.png';
 import './Navigation.css';
 
 const Navigation = () => {
@@ -13,9 +11,10 @@ const Navigation = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState('');
     const history = useHistory();
+    const location = useLocation();
 
     const handleScroll = () => {
-        if (window.scrollY > window.innerHeight) {
+        if (window.scrollY > 50) {
             setScrolling(true);
         } else {
             setScrolling(false);
@@ -30,19 +29,22 @@ const Navigation = () => {
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
 
-        // Check if user is logged in
-        const token = localStorage.getItem('token');
-        const role = localStorage.getItem('userRole');
-        if (token) {
-            setIsLoggedIn(true);
-            setUserRole(role);
-        }
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    useEffect(() => {
+        const checkLoginStatus = () => {
+            const token = localStorage.getItem('token');
+            const role = localStorage.getItem('userRole');
+            setIsLoggedIn(!!token);
+            setUserRole(role || '');
+        };
+
+        checkLoginStatus();
+    }, [location]);
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -52,12 +54,13 @@ const Navigation = () => {
         history.push('/');
     };
 
-    const handleNavItemClick = () => {
-        // Handle click actions if needed
-    };
-
     return (
-        <Navbar variant="light" expand="md" className={`menu ${scrolling ? 'hidden' : ''} ${isMobileView ? 'mobile-view' : ''}`} fixed="top">
+        <Navbar
+            variant="light"
+            expand="md"
+            className={`menu ${scrolling ? 'scrolled' : ''} ${isMobileView ? 'mobile-view' : ''}`}
+            fixed="top"
+        >
             <Link to="/">
                 <Navbar.Brand>
                     <motion.img
@@ -77,22 +80,22 @@ const Navigation = () => {
                     {isLoggedIn ? (
                         <>
                             {userRole === 'teacher' ? (
-                                <Link to="/teacher-dashboard" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                <Link to="/teacher-dashboard" className="nav-link">
                                     Dashboard
                                 </Link>
                             ) : (
-                                <Link to="/student-dashboard" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                                <Link to="/student-dashboard" className="nav-link">
                                     Dashboard
                                 </Link>
                             )}
-                            <Nav.Link onClick={handleLogout} className={`${isMobileView ? 'mobile-view' : ''}`}>Logout</Nav.Link>
+                            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                         </>
                     ) : (
                         <>
-                            <Link to="/login" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                            <Link to="/login" className="nav-link">
                                 Login
                             </Link>
-                            <Link to="/signup" className={`nav-link ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
+                            <Link to="/signup" className="nav-link">
                                 Sign Up
                             </Link>
                         </>
