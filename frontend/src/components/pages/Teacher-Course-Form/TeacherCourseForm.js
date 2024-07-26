@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {
     FaBook, FaLayerGroup, FaChartBar, FaDollarSign, FaClock, FaVideo, FaPlus, FaTrash, FaRegImage
 } from 'react-icons/fa';
+import { MdCheck, MdCancel, MdDelete } from 'react-icons/md';
+
 import './TeacherCourseForm.css';
 
 const CourseForm = ({ onSubmit, initialData, onCancel }) => {
@@ -63,159 +65,181 @@ const CourseForm = ({ onSubmit, initialData, onCancel }) => {
 
     return (
         <form className="modern-form" onSubmit={handleSubmit}>
-            <h2>{initialData ? 'Edit Course' : 'Add Course'}</h2>
-
-            <div className="form-group">
-                <FaRegImage className="form-icon" />
-                <input
-                    name="imageUrl"
-                    value={formData.imageUrl}
-                    onChange={handleChange}
-                    placeholder="Image Url"
-                    required
-                />
+            <div className="form-header">
+                <h2>{initialData ? 'Edit Course' : 'Add New Course'}</h2>
             </div>
 
-            <div className="image-preview">
-                <img src={formData.imageUrl} alt="Course preview" />
-            </div>
+            <div className="form-body">
+                <div className="form-column">
+                    <div className="form-group">
+                        <FaRegImage className="form-icon" />
+                        <input
+                            name="imageUrl"
+                            value={formData.imageUrl}
+                            onChange={handleChange}
+                            placeholder="Image Url"
+                            required
+                        />
+                    </div>
 
-            <div className="form-group">
-                <FaBook className="form-icon" />
-                <input
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    placeholder="Course Title"
-                    required
-                />
-            </div>
+                    <div className="form-group">
+                        <FaBook className="form-icon" />
+                        <input
+                            name="title"
+                            value={formData.title}
+                            onChange={handleChange}
+                            placeholder="Course Title"
+                            required
+                        />
+                    </div>
 
-            <div className="form-group">
-                <FaLayerGroup className="form-icon" />
-                <textarea
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    placeholder="Course Description"
-                    required
-                />
-            </div>
+                    <div className="form-group">
+                        <FaLayerGroup className="form-icon" />
+                        <select
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select Category</option>
+                            <option value="Programming">Programming</option>
+                            <option value="Design">Design</option>
+                            <option value="Business">Business</option>
+                            <option value="Marketing">Marketing</option>
+                        </select>
+                    </div>
 
-            <div className="form-group">
-                <FaLayerGroup className="form-icon" />
-                <input
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    placeholder="Category"
-                    required
-                />
-            </div>
+                    <div className="form-group">
+                        <FaChartBar className="form-icon" />
+                        <select
+                            name="difficultyLevel"
+                            value={formData.difficultyLevel}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select Difficulty Level</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
 
-            <div className="form-group">
-                <FaChartBar className="form-icon" />
-                <select
-                    name="difficultyLevel"
-                    value={formData.difficultyLevel}
-                    onChange={handleChange}
-                    required
-                >
-                    <option value="">Select Difficulty Level</option>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Advanced">Advanced</option>
-                </select>
-            </div>
+                    <div className="form-group">
+                        <FaDollarSign className="form-icon" />
+                        <input
+                            name="price"
+                            type="number"
+                            value={formData.price}
+                            onChange={handleChange}
+                            placeholder="Price"
+                            required
+                        />
+                    </div>
 
-            <div className="form-group">
-                <FaDollarSign className="form-icon" />
-                <input
-                    name="price"
-                    type="number"
-                    value={formData.price}
-                    onChange={handleChange}
-                    placeholder="Price"
-                    required
-                />
-            </div>
-
-            <div className="form-group">
-                <FaClock className="form-icon" />
-                <input
-                    name="duration"
-                    type="number"
-                    value={formData.duration}
-                    onChange={handleChange}
-                    placeholder="Duration (in hours)"
-                    required
-                />
-            </div>
-
-            <div className="form-group">
-                <FaVideo className="form-icon" />
-                <input
-                    name="videoInput"
-                    value={videoInput}
-                    onChange={handleVideoChange}
-                    placeholder="Add Video Link"
-                />
-                <button type="button" onClick={addVideo} className="add-btn">
-                    <FaPlus />
-                </button>
-            </div>
-            {formData.videos.length > 0 && (
-                <div className="list-group">
-                    <h4>Added Videos:</h4>
-                    <ul>
-                        {formData.videos.map((video, index) => (
-                            <li key={index}>
-                                {video}
-                                <button type="button" onClick={() => removeVideo(index)} className="remove-btn">
-                                    <FaTrash />
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="form-group">
+                        <FaClock className="form-icon" />
+                        <input
+                            name="duration"
+                            type="number"
+                            value={formData.duration}
+                            onChange={handleChange}
+                            placeholder="Duration (in hours)"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <FaLayerGroup className="form-icon" />
+                        <textarea
+                            name="description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            placeholder="Course Description"
+                            required
+                        />
+                    </div>
                 </div>
-            )}
 
-            <div className="form-group">
-                <FaLayerGroup className="form-icon" />
-                <input
-                    name="whatYouWillLearnInput"
-                    value={whatYouWillLearnInput}
-                    onChange={handleWhatYouWillLearnChange}
-                    placeholder="Add New Learning Scopes"
-                />
-                <button type="button" onClick={addWhatYouWillLearn} className="add-btn">
-                    <FaPlus />
+                <div className="form-column">
+                    <div className="image-preview">
+                        <img src={formData.imageUrl} alt="Course preview" />
+                    </div>
+
+
+
+                    <div className="form-group">
+                        <FaVideo className="form-icon" />
+                        <input
+                            name="videoInput"
+                            value={videoInput}
+                            onChange={handleVideoChange}
+                            placeholder="Add Video Link"
+                        />
+                        <button type="button" onClick={addVideo} className="add-btn">
+                            <FaPlus />
+                        </button>
+                    </div>
+
+                    {formData.videos.length > 0 && (
+                        <div className="list-group">
+                            <h4>Added Videos:</h4>
+                            <ul>
+                                {formData.videos.map((video, index) => (
+                                    <li key={index}>
+                                        {video}
+                                        <button type="button" onClick={() => removeVideo(index)} className="remove-btn">
+                                            <FaTrash />
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    <div className="form-group">
+                        <FaLayerGroup className="form-icon" />
+                        <input
+                            name="whatYouWillLearnInput"
+                            value={whatYouWillLearnInput}
+                            onChange={handleWhatYouWillLearnChange}
+                            placeholder="Add New Learning Scopes"
+                        />
+                        <button type="button" onClick={addWhatYouWillLearn} className="add-btn">
+                            <FaPlus />
+                        </button>
+                    </div>
+
+                    {formData.whatYouWillLearn.length > 0 && (
+                        <div className="list-group">
+                            <h4>What you will learn:</h4>
+                            <ul>
+                                {formData.whatYouWillLearn.map((item, index) => (
+                                    <li key={index}>
+                                        {item}
+                                        <button type="button" onClick={() => removeWhatYouWillLearn(index)} className="remove-btn">
+                                            <FaTrash />
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="form-footer">
+
+                {onCancel && (
+                    <button type="button" className="cancel-btn2" onClick={onCancel}>
+                        <MdCancel style={{ marginRight: '8px' }} />
+                        Cancel
+                    </button>
+                )}
+                <button type="submit" className="submit-btn">
+                    <MdCheck style={{ marginRight: '8px' }} />
+                    {initialData ? 'Update Course' : 'Add Course'}
                 </button>
             </div>
-            {formData.whatYouWillLearn.length > 0 && (
-                <div className="list-group">
-                    <h4>What one would learn from this course:</h4>
-                    <ul>
-                        {formData.whatYouWillLearn.map((item, index) => (
-                            <li key={index}>
-                                {item}
-                                <button type="button" onClick={() => removeWhatYouWillLearn(index)} className="remove-btn">
-                                    <FaTrash />
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
 
-            <button type="submit" className="submit-btn">
-                {initialData ? 'Update Course' : 'Add Course'}
-            </button>
-            {onCancel && (
-                <button type="button" className="cancel-btn" onClick={onCancel}>
-                    Cancel
-                </button>
-            )}
         </form>
     );
 };

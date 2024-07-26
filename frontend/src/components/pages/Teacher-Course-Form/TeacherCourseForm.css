@@ -1,36 +1,44 @@
-/* TeacherCourseForm.css */
-
 .teacher-dashboard .modern-form {
     background-color: #fbf9f4;
     border-radius: 15px;
     padding: 24px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+}
+
+.teacher-dashboard .form-header {
+    margin-bottom: 20px;
+}
+
+.teacher-dashboard .form-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+}
+
+.teacher-dashboard .form-body {
+    display: flex;
     gap: 20px;
 }
 
-.teacher-dashboard h2 {
-    grid-column: span 2;
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+.teacher-dashboard .form-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .teacher-dashboard .form-group {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     position: relative;
 }
 
 .teacher-dashboard .form-icon {
     position: absolute;
     left: 12px;
-    top: 12px;
-    color: #6B7280;
+    color: #333;
     font-size: 1rem;
 }
 
@@ -47,15 +55,13 @@
 }
 
 .teacher-dashboard .form-group textarea {
-    min-height: 100px;
+    min-height: 182px;
     resize: vertical;
 }
 
 .teacher-dashboard .image-preview {
-    grid-column: 2;
-    grid-row: 2 / span 2;
     width: 100%;
-    height: 200px;
+    height: 230px;
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -65,23 +71,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.teacher-dashboard .form-group:nth-child(2) {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.teacher-dashboard .form-group:nth-child(3) {
-    grid-column: 1 / span 2;
-    grid-row: 4;
-}
-
-.teacher-dashboard .form-group:nth-child(4),
-.teacher-dashboard .form-group:nth-child(5),
-.teacher-dashboard .form-group:nth-child(6),
-.teacher-dashboard .form-group:nth-child(7) {
-    grid-column: span 1;
 }
 
 .teacher-dashboard .add-btn,
@@ -93,6 +82,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    padding-bottom: 3%;
 }
 
 .teacher-dashboard .add-btn {
@@ -101,23 +91,14 @@
     margin-left: 8px;
 }
 
-.teacher-dashboard .add-btn:hover {
-    background-color: #2563EB;
-}
-
 .teacher-dashboard .remove-btn {
     background-color: #EF4444;
     color: #ffffff;
-    padding: 4px 8px;
-}
-
-.teacher-dashboard .remove-btn:hover {
-    background-color: #DC2626;
+    padding-bottom: 3%;
 }
 
 .teacher-dashboard .list-group {
-    grid-column: span 2;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .teacher-dashboard .list-group h4 {
@@ -129,110 +110,60 @@
 .teacher-dashboard .list-group ul {
     list-style-type: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
 }
 
 .teacher-dashboard .list-group li {
     background-color: #F3F4F6;
     border-radius: 6px;
     padding: 8px 12px;
+    margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
 }
 
+.teacher-dashboard .form-footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.teacher-dashboard .cancel-btn2,
 .teacher-dashboard .submit-btn {
-    background-color: #10B981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 750;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.teacher-dashboard .submit-btn {
+    background-color: #17a2ff;
     color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    max-width: 200px;
-    margin: 24px auto 0;
-    display: block;
-    grid-column: span 2;
 }
 
-.teacher-dashboard .submit-btn:hover {
-    background-color: #059669;
+.teacher-dashboard .cancel-btn2 {
+    background-color: #e3e2e2d7;
+    /* Red */
+    color: #1f1f1f;
 }
 
-.teacher-dashboard {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.teacher-dashboard h4 {
-    font-weight: 600;
-    color: #1F2937;
-}
-
-.teacher-dashboard input::placeholder,
-.teacher-dashboard textarea::placeholder {
-    color: #9CA3AF;
-}
-
-.teacher-dashboard .image-preview {
-    grid-column: span 2;
-    width: 100%;
-    max-height: 200px;
-    overflow: hidden;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.teacher-dashboard .image-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.teacher-dashboard h2 {
-    grid-column: span 2;
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.teacher-dashboard .cancel-btn {
-    background-color: #e0e0e0;
-    color: #333;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    max-width: 200px;
-    margin: 24px auto 0;
-    display: block;
-    grid-column: span 2;
-}
-
-.teacher-dashboard .cancel-btn:hover {
-    background-color: #ccc;
+.teacher-dashboard .submit-btn:hover,
+.teacher-dashboard .cancel-btn2:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
-    .teacher-dashboard .modern-form {
-        grid-template-columns: 1fr;
-    }
-
-    .teacher-dashboard .form-group:nth-child(n) {
-        grid-column: span 1;
-    }
-
-    .teacher-dashboard .list-group ul {
-        grid-template-columns: 1fr;
+    .teacher-dashboard .form-body {
+        flex-direction: column;
     }
 }
