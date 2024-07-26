@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
-import './CourseDetails.css'; // Import the CSS file for styling
+import './StudentCourseDetails.css'; // Import the CSS file for styling
 
 const CourseDetails = () => {
     const { courseId } = useParams(); // Extract courseId from the URL
@@ -14,7 +14,7 @@ const CourseDetails = () => {
         const fetchCourseDetails = async () => {
             try {
                 const token = localStorage.getItem('token'); // Get token from local storage
-                const response = await axios.get(`http://localhost:5000/api/courses/getOneCourse/${courseId}`, {
+                const response = await axios.get(`https://ascend-edu-server.onrender.com/api/courses/getOneCourse/${courseId}`, {
                     headers: { 'x-auth-token': token } // Send token in headers
                 });
                 setCourse(response.data);

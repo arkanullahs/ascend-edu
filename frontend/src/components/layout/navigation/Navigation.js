@@ -85,10 +85,6 @@ const Navigation = () => {
                                     Dashboard
                                 </Link>
                             )}
-                            <Link to="/courses" className={`nav-icon ${isMobileView ? 'mobile-view' : ''}`} onClick={handleNavItemClick}>
-                                <IoMdSearch size={24} className="ios-icon" />
-                                <span className="nav-text">Search</span>
-                            </Link>
                             <Nav.Link onClick={handleLogout} className={`${isMobileView ? 'mobile-view' : ''}`}>Logout</Nav.Link>
                         </>
                     ) : (

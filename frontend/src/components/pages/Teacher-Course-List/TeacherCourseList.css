@@ -1,0 +1,73 @@
+.teacher-dashboard .course-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.teacher-dashboard .course-list th,
+.teacher-dashboard .course-list td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.teacher-dashboard .course-list th {
+    background-color: #fafafa;
+    font-weight: 600;
+}
+
+.teacher-dashboard .course-list tr:hover {
+    background-color: #fafafa;
+}
+
+.teacher-dashboard .action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.teacher-dashboard .edit-btn {
+    color: #1890ff;
+}
+
+.teacher-dashboard .edit-btn:hover {
+    color: #40a9ff;
+}
+
+.teacher-dashboard .delete-btn {
+    color: #ff4d4f;
+}
+
+.teacher-dashboard .delete-btn:hover {
+    color: #ff7875;
+}
+
+.teacher-dashboard .expand-btn {
+    color: #52c41a;
+}
+
+.teacher-dashboard .expand-btn:hover {
+    color: #73d13d;
+}
+
+.teacher-dashboard .course-details {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.teacher-dashboard .course-details h4 {
+    margin-bottom: 10px;
+}
+
+.teacher-dashboard .course-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.teacher-dashboard .course-details li {
+    margin-bottom: 5px;
+}
