@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Navigation from './layout/navigation/Navigation';
 import Footer from './layout/Footer/Footer';
 import Home from './pages/Home/Home';
-import CoursesList from './pages/Course-List/CourseList';
-import CourseDetails from './pages/Course-Info/CourseDetails';
+import CoursesList from './pages/Students-Dashboard/StudentCourseList';
+import CourseDetails from './pages/Student-Course-Info/StudentCourseDetails';
 import Login from "./pages/Login/index";
 import Signup from "./pages/Signup/index";
 import TeacherDashboard from './pages/Teacher-Dashboard/TeacherDashboard';

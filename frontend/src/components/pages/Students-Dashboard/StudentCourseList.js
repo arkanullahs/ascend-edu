@@ -1,7 +1,7 @@
 import React from 'react';
-import CourseForm from '../Course-Form/CourseForm';
+import CourseForm from '../Teacher-Course-Form/TeacherCourseForm';
 import { Link } from 'react-router-dom';
-import './CourseList.css'; // Import the CSS file for styling
+import './StudentCourseList.css'; // Import the CSS file for styling
 
 const CourseList = ({ courses, onUpdate, onDelete, onEnroll, enrolledCourses, showVideos }) => {
     return (

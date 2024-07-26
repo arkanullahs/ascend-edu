@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CourseList from '../Course-List/CourseList';
+import CourseList from './StudentCourseList.js';
 import './StudentDashboard.css'; // Import the CSS file for styling
 
 const StudentDashboard = () => {

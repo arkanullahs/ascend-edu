@@ -88,8 +88,11 @@ const Home = () => {
       </section>
 
       <section className="features frosty-glass">
-        <h2>Our Features</h2>
+        <h2>Your mind is too.</h2>
+        <p class="featuretext">You opened all those tabs for a reason,
+          but now you face:</p>
         <div className="feature-cards">
+
           {['Live Classes', 'Expert Instructors', 'Interactive Learning', 'Progress Tracking'].map((feature, index) => (
             <motion.div
               key={index}
@@ -97,7 +100,13 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+
             >
+              <div class="stopwatch">
+                <img src="https://assets-global.website-files.com/631f9b7b3a2f7a42f4ff5280/6321073a41e0518dece1cb79_hourglass.svg" loading="lazy" alt="" class="icon"></img>
+              </div>
+              <div class="digit">01</div>
+
               <h3>{feature}</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </motion.div>
@@ -145,19 +154,7 @@ const Home = () => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="chart-card glass-card">
-            <h3>Subject Performance Comparison</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarChartData}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="subject" />
-                <PolarRadiusAxis angle={30} domain={[0, 150]} />
-                <Radar name="Student A" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-                <Radar name="Student B" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
-                <Legend />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
+
           <div className="chart-card glass-card">
             <h3>Course Popularity and Ratings</h3>
             <ResponsiveContainer width="100%" height={300}>

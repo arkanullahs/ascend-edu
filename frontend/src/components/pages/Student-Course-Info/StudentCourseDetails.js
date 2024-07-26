@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
-import './CourseDetails.css'; // Import the CSS file for styling
+import './StudentCourseDetails.css'; // Import the CSS file for styling
 
 const CourseDetails = () => {
     const { courseId } = useParams(); // Extract courseId from the URL

@@ -26,21 +26,6 @@ section {
 }
 
 
-.frosty-card {
-    background: #fbf9f4;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid var(--frosty-border);
-    transition: all 0.3s ease;
-}
-
-.frosty-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
-}
-
 .hero {
     padding: 80px 150px;
     display: flex;
@@ -55,18 +40,31 @@ section {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
+    font-size: 3.2rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    color: #333;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 140%;
+    position: relative;
+    backdrop-filter: var(--background-color);
 }
 
 .hero p {
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
     font-size: 1.5rem;
-    font-weight: 150;
-    margin-bottom: 30px;
-    color: #333333bd;
+    font-weight: 300;
+    line-height: 140%;
+    position: relative;
+    backdrop-filter: var(--background-color);
 }
 
 .hero-actions {
@@ -116,16 +114,15 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.features,
+
+
 .metrics,
 .trusted-by-section {
-    background-color: #fbf9f4;
-    /* Slightly transparent white */
+    background-color: #f8f2e8;
     padding: 200px;
     text-align: center;
     margin: 20px 0;
 
-    /* Light shadow for better visibility */
 }
 
 .trusted-by-section img {
@@ -135,35 +132,32 @@ section {
 
 
 h2 {
-    font-size: 2.5rem;
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
+    font-size: 40px;
     font-weight: 700;
-    margin-bottom: 40px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 140%;
+    position: relative;
+    backdrop-filter: var(--background-color);
 }
 
-
-.feature-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.feature-card {
-    padding: 30px;
-}
-
-.feature-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.feature-card p {
-    color: rgba(255, 255, 255, 0.8);
+.featuretext {
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
     font-weight: 300;
+    line-height: 140%;
+    position: relative;
+    backdrop-filter: var(--background-color);
+
 }
 
 .chart-container {
@@ -174,13 +168,22 @@ h2 {
 
 .chart-card {
     padding: 20px;
+    background-color: #fbf9f4;
+    border-radius: 20px;
 }
 
 .chart-card h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #fff;
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 140%;
+    position: relative;
+    backdrop-filter: var(--background-color);
 }
 
 
@@ -195,8 +198,6 @@ h2 {
     text-align: center;
     padding: 20px 25px;
     background-color: #faf7f0;
-    /* Light grey background for contrast */
-    /* Light shadow */
     border-radius: 10px;
 }
 
@@ -221,20 +222,95 @@ h6 {
     gap: 200px;
     padding-bottom: 70px;
     padding-top: 20px;
-    /* Adjust the gap between logos */
 }
 
 
-/* Additional styles for consistent logo sizing */
+
 .company-logo {
     max-width: 130px;
-    /* Ensure all logos are the same width */
     max-height: 90px;
-    /* Ensure all logos are the same height */
     width: 130px;
     height: 80px;
     object-fit: contain;
-    /* Maintains aspect ratio and fits within specified dimensions */
+
+}
+
+/*features card*/
+
+.features {
+    background-color: #f8f2e8;
+    padding: 200px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.frosty-card {
+    background: #fbf9f4;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 350fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    padding: 30px;
+}
+
+.feature-card h3 {
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 140%;
+    position: relative;
+}
+
+.feature-card p {
+    z-index: 5;
+    color: var(--black);
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 140%;
+    position: relative;
+}
+
+
+/*features er icon*/
+.stopwatch {
+    background-color: mistyrose;
+    border-radius: 16px;
+    justify-content: center;
+    align-self: flex-end;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    position: absolute;
+
+}
+
+.digit {
+    color: var(--deep-gray);
+    margin-bottom: 0;
+    font-family: IBM Plex Mono, sans-serif;
+    font-size: 24px;
 }
 
 
