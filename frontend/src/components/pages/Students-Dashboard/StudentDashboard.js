@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseList from './StudentCourseList';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-import Alert from '@mui/material/Alert';
+import './StudentDashboard.css';
 
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
@@ -56,41 +52,28 @@ const StudentDashboard = () => {
         }
     };
 
-    if (isLoading) return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <CircularProgress />
-        </Box>
-    );
-
-    if (error) return <Alert severity="error">{error}</Alert>;
+    if (isLoading) return <div className="sd-loading">Loading...</div>;
+    if (error) return <div className="sd-error">{error}</div>;
 
     const availableCourses = courses.filter(course => !enrolledCourses.some(ec => ec._id === course._id));
 
     return (
-        <Container maxWidth="lg">
-            <Box sx={{ my: 4 }}>
-                <Typography variant="h2" component="h1" gutterBottom align="center">
-                    Student Dashboard
-                </Typography>
-                <Typography variant="h4" component="h2" gutterBottom sx={{ mt: 6 }}>
-                    Enrolled Courses
-                </Typography>
-                <CourseList
-                    courses={enrolledCourses}
-                    enrolledCourses={enrolledCourses}
-                    isEnrolledList={true}
-                />
-                <Typography variant="h4" component="h2" gutterBottom sx={{ mt: 6 }}>
-                    Available Courses
-                </Typography>
-                <CourseList
-                    courses={availableCourses}
-                    onEnroll={handleEnroll}
-                    enrolledCourses={enrolledCourses}
-                    isEnrolledList={false}
-                />
-            </Box>
-        </Container>
+        <div className="sd-container">
+            <h1 className="sd-title">Student Dashboard</h1>
+            <h2 className="sd-subtitle">Enrolled Courses</h2>
+            <CourseList
+                courses={enrolledCourses}
+                enrolledCourses={enrolledCourses}
+                isEnrolledList={true}
+            />
+            <h2 className="sd-subtitle">Available Courses</h2>
+            <CourseList
+                courses={availableCourses}
+                onEnroll={handleEnroll}
+                enrolledCourses={enrolledCourses}
+                isEnrolledList={false}
+            />
+        </div>
     );
 };
 
