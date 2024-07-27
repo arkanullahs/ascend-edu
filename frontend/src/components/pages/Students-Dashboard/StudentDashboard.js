@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CourseList from './StudentCourseList.js';
-import './StudentDashboard.css'; // Import the CSS file for styling
+import CourseList from './StudentCourseList';
+import './StudentDashboard.css';
 
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
@@ -52,24 +52,29 @@ const StudentDashboard = () => {
         }
     };
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (isLoading) return <div className="sd-loading">Loading...</div>;
+    if (error) return <div className="sd-error">{error}</div>;
+
+    const availableCourses = courses.filter(course => !enrolledCourses.some(ec => ec._id === course._id));
 
     return (
-        <div className="student-dashboard">
-            <h1>Student Dashboard</h1>
-            <h2>All Courses</h2>
-            <CourseList
-                courses={courses}
-                onEnroll={handleEnroll}
-                enrolledCourses={enrolledCourses}
-            />
-            <h2>Enrolled Courses</h2>
-            <CourseList
-                courses={enrolledCourses}
-                showVideos={true}
-            />
-        </div>
+        <main className='sd-main-container' >
+            <div className="sd-container">
+                <h2 className="sd-subtitle">Enrolled Courses</h2>
+                <CourseList
+                    courses={enrolledCourses}
+                    enrolledCourses={enrolledCourses}
+                    isEnrolledList={true}
+                />
+                <h2 className="sd-subtitle">Available Courses</h2>
+                <CourseList
+                    courses={availableCourses}
+                    onEnroll={handleEnroll}
+                    enrolledCourses={enrolledCourses}
+                    isEnrolledList={false}
+                />
+            </div>
+        </main>
     );
 };
 

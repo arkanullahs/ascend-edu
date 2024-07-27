@@ -1,10 +1,10 @@
 /* CourseCard.css */
 .course-card {
-    background-color: #fbf9f4;
+    background-color: #fffcfc;
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
-    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .course-card:hover {
@@ -117,18 +117,19 @@
     margin: 0 0 15px 0;
     font-size: 1.4rem;
     color: #333;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .course-description {
     margin-bottom: 20px;
-    color: #666;
+    color: #6b6b6ba1;
     font-size: 1rem;
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-weight: 500;
 }
 
 .course-meta {

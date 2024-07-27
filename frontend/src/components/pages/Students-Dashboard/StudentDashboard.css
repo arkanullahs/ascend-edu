@@ -1,13 +1,32 @@
-.student-dashboard {
+.sd-main-container {
+    background-color: #f8f2e8;
+    padding-top: 30px;
+}
+
+.sd-container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-.student-dashboard h1 {
+.sd-subtitle {
+    font-size: 2rem;
     text-align: center;
+    margin-top: 40px;
     margin-bottom: 20px;
+    color: #34495e;
 }
 
-.student-dashboard h2 {
-    margin-top: 40px;
+.sd-loading {
     text-align: center;
+    font-size: 1.2rem;
+    color: #3498db;
+    margin-top: 20px;
+}
+
+.sd-error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #e74c3c;
+    margin-top: 20px;
 }

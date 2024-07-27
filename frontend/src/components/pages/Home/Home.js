@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, RadarChart, Radar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Cell } from 'recharts';
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 import "./Home.css"
 const Home = () => {
   const lineChartData = [
@@ -19,14 +19,6 @@ const Home = () => {
     { name: 'Arts', value: 200 },
   ];
 
-  const radarChartData = [
-    { subject: 'Math', A: 120, B: 110, fullMark: 150 },
-    { subject: 'Chinese', A: 98, B: 130, fullMark: 150 },
-    { subject: 'English', A: 86, B: 130, fullMark: 150 },
-    { subject: 'Geography', A: 99, B: 100, fullMark: 150 },
-    { subject: 'Physics', A: 85, B: 90, fullMark: 150 },
-    { subject: 'History', A: 65, B: 85, fullMark: 150 },
-  ];
 
   const barChartData = [
     { name: 'Course A', students: 4000, rating: 2400 },
