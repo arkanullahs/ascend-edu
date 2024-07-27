@@ -4,6 +4,7 @@
     padding: 20px;
     font-family: 'Roboto', sans-serif;
     color: #333;
+
 }
 
 .cd-header {
@@ -19,9 +20,10 @@
     align-items: center;
     color: #3498db;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 20px;
     transition: color 0.3s;
+    font-weight: 700;
 }
 
 .cd-back-link:hover {
@@ -33,18 +35,19 @@
 }
 
 .cd-title {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     color: #2c3e50;
     margin-bottom: 16px;
     font-weight: 700;
 }
 
 .cd-description {
-    font-size: 1.1rem;
+    font-size: 1.28rem;
     color: #7f8c8d;
     max-width: 800px;
     margin: 0 auto 20px;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .cd-info {
@@ -57,10 +60,10 @@
 .cd-info-item {
     display: flex;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.08rem;
     padding: 5px 12px;
     border-radius: 20px;
-    font-weight: 500;
+    font-weight: 550;
 }
 
 .cd-info-item svg {
@@ -117,7 +120,7 @@
 .cd-what-you-learn h3,
 .cd-instructor h3,
 .cd-video-player h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #2c3e50;
     margin-bottom: 15px;
     font-weight: 600;
@@ -133,6 +136,7 @@
     display: flex;
     align-items: flex-start;
     color: #34495e;
+    font-size: larger;
 }
 
 .cd-what-you-learn li svg {
@@ -140,6 +144,7 @@
     color: #27ae60;
     flex-shrink: 0;
     margin-top: 3px;
+    font-size: larger;
 }
 
 .cd-video-container {
@@ -185,11 +190,12 @@
     align-items: center;
     justify-content: center;
     margin-right: 10px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .cd-lesson-title {
     flex-grow: 1;
+    font-size: larger;
 }
 
 .cd-lesson-duration {

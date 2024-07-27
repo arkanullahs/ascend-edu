@@ -107,7 +107,6 @@ const CourseDetails = () => {
                                 >
                                     <span className="cd-lesson-number">{index + 1}</span>
                                     <span className="cd-lesson-title">Lesson {index + 1}</span>
-                                    <span className="cd-lesson-duration">15:00</span>
                                 </button>
                             ))}
                         </div>

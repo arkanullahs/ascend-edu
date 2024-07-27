@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiClock, FiDollarSign } from 'react-icons/fi';
-import { MdCategory, MdLabel } from 'react-icons/md'; // Add appropriate icons
+import { FiClock, FiDollarSign, FiAward, FiBook } from 'react-icons/fi';
 import './StudentCourseList.css';
 
 const CourseList = ({ courses, onEnroll, enrolledCourses, isEnrolledList }) => {
@@ -15,10 +14,10 @@ const CourseList = ({ courses, onEnroll, enrolledCourses, isEnrolledList }) => {
                         <p className="cl-course-description">{course.description}</p>
                         <div className="cl-course-tags">
                             <span className="cl-course-category">
-                                <MdCategory /> {course.category}
+                                <FiBook /> {course.category}
                             </span>
                             <span className="cl-course-difficulty">
-                                <MdLabel /> {course.difficultyLevel}
+                                <FiAward /> {course.difficultyLevel}
                             </span>
                         </div>
                         <div className="cl-course-details">

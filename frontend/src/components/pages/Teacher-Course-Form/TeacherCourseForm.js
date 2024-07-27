@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
     FaBook, FaLayerGroup, FaChartBar, FaDollarSign, FaClock, FaVideo, FaPlus, FaTrash, FaRegImage
 } from 'react-icons/fa';
-import { MdCheck, MdCancel, MdDelete } from 'react-icons/md';
+import { MdCheck, MdCancel } from 'react-icons/md';
 
 import './TeacherCourseForm.css';
 
