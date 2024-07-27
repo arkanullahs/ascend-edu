@@ -47,73 +47,75 @@ const CourseDetails = () => {
     if (!course) return null;
 
     return (
-        <div className="cd-course-details">
-            <div className="cd-header">
-                <Link to="/student-dashboard" className="cd-back-link">
-                    <FiArrowLeft /> Back to Courses
-                </Link>
-                <h1 className="cd-title">{course.title}</h1>
-                <p className="cd-description">{course.description}</p>
-                <div className="cd-info">
-                    <span className="cd-info-item cd-duration"><FiClock /> {course.duration} hours</span>
-                    <span className="cd-info-item cd-price"><FiDollarSign /> {course.price}</span>
-                    <span className="cd-info-item cd-category"><FiBook /> {course.category}</span>
-                    <span className="cd-info-item cd-difficulty"><FiAward /> {course.difficultyLevel}</span>
-                </div>
-            </div>
-
-            <div className="cd-main-content">
-                <div className="cd-left-column">
-                    <img className="cd-image" src={course.imageUrl} alt={course.title} />
-
-                    <div className="cd-what-you-learn">
-                        <h3>What You Will Learn</h3>
-                        <ul>
-                            {course.whatYouWillLearn.map((item, index) => (
-                                <li key={index}><FiCheckCircle /> {item}</li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div className="cd-instructor">
-                        <h3>Instructor</h3>
-                        <p>{course.lead}</p>
+        <main className='cd-main'>
+            <div className="cd-course-details">
+                <div className="cd-header">
+                    <Link to="/student-dashboard" className="cd-back-link">
+                        <FiArrowLeft /> Back to Courses
+                    </Link>
+                    <h1 className="cd-title">{course.title}</h1>
+                    <p className="cd-description">{course.description}</p>
+                    <div className="cd-info">
+                        <span className="cd-info-item cd-duration"><FiClock /> {course.duration} hours</span>
+                        <span className="cd-info-item cd-price"><FiDollarSign /> {course.price}</span>
+                        <span className="cd-info-item cd-category"><FiBook /> {course.category}</span>
+                        <span className="cd-info-item cd-difficulty"><FiAward /> {course.difficultyLevel}</span>
                     </div>
                 </div>
 
-                <div className="cd-right-column">
-                    <div className="cd-video-player">
-                        <h3>Course Content</h3>
-                        <div className="cd-video-container">
-                            {videoUrl && (
-                                <ReactPlayer
-                                    url={videoUrl}
-                                    controls
-                                    width='100%'
-                                    height='400px'
-                                    className="cd-react-player"
-                                />
-                            )}
+                <div className="cd-main-content">
+                    <div className="cd-left-column">
+                        <img className="cd-image" src={course.imageUrl} alt={course.title} />
+
+                        <div className="cd-what-you-learn">
+                            <h3>What You Will Learn</h3>
+                            <ul>
+                                {course.whatYouWillLearn.map((item, index) => (
+                                    <li key={index}><FiCheckCircle /> {item}</li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="cd-video-list">
-                            {course.videos.map((video, index) => (
-                                <button
-                                    key={index}
-                                    className={`cd-video-button ${activeLesson === index ? 'active' : ''}`}
-                                    onClick={() => {
-                                        setVideoUrl(video);
-                                        setActiveLesson(index);
-                                    }}
-                                >
-                                    <span className="cd-lesson-number">{index + 1}</span>
-                                    <span className="cd-lesson-title">Lesson {index + 1}</span>
-                                </button>
-                            ))}
+
+                        <div className="cd-instructor">
+                            <h3>Instructor</h3>
+                            <p>Teacher ID: {course.teacher}</p>
                         </div>
                     </div>
+
+                    <div className="cd-right-column">
+                        <div className="cd-video-player">
+                            <h3>Course Content</h3>
+                            <div className="cd-video-container">
+                                {videoUrl && (
+                                    <ReactPlayer
+                                        url={videoUrl}
+                                        controls
+                                        width='100%'
+                                        height='400px'
+                                        className="cd-react-player"
+                                    />
+                                )}
+                            </div>
+                            <div className="cd-video-list">
+                                {course.videos.map((video, index) => (
+                                    <button
+                                        key={index}
+                                        className={`cd-video-button ${activeLesson === index ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setVideoUrl(video);
+                                            setActiveLesson(index);
+                                        }}
+                                    >
+                                        <span className="cd-lesson-number">{index + 1}</span>
+                                        <span className="cd-lesson-title">Lesson {index + 1}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 

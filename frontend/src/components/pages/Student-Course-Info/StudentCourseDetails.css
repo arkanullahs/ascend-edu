@@ -1,3 +1,7 @@
+.cd-main {
+    background-color: #f8f2e8;
+}
+
 .cd-course-details {
     max-width: 1200px;
     margin: 0 auto;
@@ -8,7 +12,7 @@
 }
 
 .cd-header {
-    background-color: #f8f9fa;
+    background-color: #fffcfc;
     padding: 40px 20px;
     text-align: center;
     margin-bottom: 40px;
@@ -111,7 +115,7 @@
 
 .cd-what-you-learn,
 .cd-instructor {
-    background-color: #f8f9fa;
+    background-color: #fffcfc;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -126,9 +130,14 @@
     font-weight: 600;
 }
 
+.cd-instructor p {
+    font-size: 1.2rem;
+}
+
 .cd-what-you-learn ul {
     list-style-type: none;
     padding-left: 0;
+    font-size: 1.2rem;
 }
 
 .cd-what-you-learn li {
@@ -136,7 +145,6 @@
     display: flex;
     align-items: flex-start;
     color: #34495e;
-    font-size: larger;
 }
 
 .cd-what-you-learn li svg {
@@ -164,7 +172,7 @@
     align-items: center;
     width: 100%;
     padding: 10px;
-    background-color: #f8f9fa;
+    background-color: #fffcfc;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     cursor: pointer;

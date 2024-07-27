@@ -58,22 +58,23 @@ const StudentDashboard = () => {
     const availableCourses = courses.filter(course => !enrolledCourses.some(ec => ec._id === course._id));
 
     return (
-        <div className="sd-container">
-            <h1 className="sd-title">Student Dashboard</h1>
-            <h2 className="sd-subtitle">Enrolled Courses</h2>
-            <CourseList
-                courses={enrolledCourses}
-                enrolledCourses={enrolledCourses}
-                isEnrolledList={true}
-            />
-            <h2 className="sd-subtitle">Available Courses</h2>
-            <CourseList
-                courses={availableCourses}
-                onEnroll={handleEnroll}
-                enrolledCourses={enrolledCourses}
-                isEnrolledList={false}
-            />
-        </div>
+        <main className='sd-main-container' >
+            <div className="sd-container">
+                <h2 className="sd-subtitle">Enrolled Courses</h2>
+                <CourseList
+                    courses={enrolledCourses}
+                    enrolledCourses={enrolledCourses}
+                    isEnrolledList={true}
+                />
+                <h2 className="sd-subtitle">Available Courses</h2>
+                <CourseList
+                    courses={availableCourses}
+                    onEnroll={handleEnroll}
+                    enrolledCourses={enrolledCourses}
+                    isEnrolledList={false}
+                />
+            </div>
+        </main>
     );
 };
 
