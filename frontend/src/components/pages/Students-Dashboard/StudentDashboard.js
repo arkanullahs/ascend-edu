@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CourseList from './StudentCourseList.js';
-import './StudentDashboard.css'; // Import the CSS file for styling
+import CourseList from './StudentCourseList';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
 
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
@@ -52,24 +56,41 @@ const StudentDashboard = () => {
         }
     };
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (isLoading) return (
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <CircularProgress />
+        </Box>
+    );
+
+    if (error) return <Alert severity="error">{error}</Alert>;
+
+    const availableCourses = courses.filter(course => !enrolledCourses.some(ec => ec._id === course._id));
 
     return (
-        <div className="student-dashboard">
-            <h1>Student Dashboard</h1>
-            <h2>All Courses</h2>
-            <CourseList
-                courses={courses}
-                onEnroll={handleEnroll}
-                enrolledCourses={enrolledCourses}
-            />
-            <h2>Enrolled Courses</h2>
-            <CourseList
-                courses={enrolledCourses}
-                showVideos={true}
-            />
-        </div>
+        <Container maxWidth="lg">
+            <Box sx={{ my: 4 }}>
+                <Typography variant="h2" component="h1" gutterBottom align="center">
+                    Student Dashboard
+                </Typography>
+                <Typography variant="h4" component="h2" gutterBottom sx={{ mt: 6 }}>
+                    Enrolled Courses
+                </Typography>
+                <CourseList
+                    courses={enrolledCourses}
+                    enrolledCourses={enrolledCourses}
+                    isEnrolledList={true}
+                />
+                <Typography variant="h4" component="h2" gutterBottom sx={{ mt: 6 }}>
+                    Available Courses
+                </Typography>
+                <CourseList
+                    courses={availableCourses}
+                    onEnroll={handleEnroll}
+                    enrolledCourses={enrolledCourses}
+                    isEnrolledList={false}
+                />
+            </Box>
+        </Container>
     );
 };
 
