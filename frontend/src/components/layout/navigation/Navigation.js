@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Navbar, Nav } from 'react-bootstrap';
+import axios from 'axios';
 import logo from './logo3.png';
 import './Navigation.css';
 
@@ -10,6 +11,7 @@ const Navigation = () => {
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 767);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState('');
+    const [userName, setUserName] = useState('');
     const history = useHistory();
     const location = useLocation();
 
@@ -36,11 +38,22 @@ const Navigation = () => {
     }, []);
 
     useEffect(() => {
-        const checkLoginStatus = () => {
+        const checkLoginStatus = async () => {
             const token = localStorage.getItem('token');
             const role = localStorage.getItem('userRole');
             setIsLoggedIn(!!token);
             setUserRole(role || '');
+
+            if (token) {
+                try {
+                    const response = await axios.get('http://localhost:5000/api/users/profile', {
+                        headers: { 'x-auth-token': token }
+                    });
+                    setUserName(`${response.data.firstName} ${response.data.lastName}`);
+                } catch (error) {
+                    console.error('Error fetching user profile:', error);
+                }
+            }
         };
 
         checkLoginStatus();
@@ -51,6 +64,7 @@ const Navigation = () => {
         localStorage.removeItem('userRole');
         setIsLoggedIn(false);
         setUserRole('');
+        setUserName('');
         history.push('/');
     };
 
@@ -83,14 +97,13 @@ const Navigation = () => {
                                 <Link to="/teacher-dashboard" className="nav-link">
                                     Dashboard
                                 </Link>
-
                             ) : (
                                 <Link to="/student-dashboard" className="nav-link">
                                     Dashboard
                                 </Link>
                             )}
                             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                            <Link className="nav-link" to="/profile">Profile</Link>
+                            <Link className="nav-link" to="/profile">{userName || 'Profile'}</Link>
                         </>
                     ) : (
                         <>
