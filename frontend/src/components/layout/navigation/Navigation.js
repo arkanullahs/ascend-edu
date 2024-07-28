@@ -83,12 +83,14 @@ const Navigation = () => {
                                 <Link to="/teacher-dashboard" className="nav-link">
                                     Dashboard
                                 </Link>
+
                             ) : (
                                 <Link to="/student-dashboard" className="nav-link">
                                     Dashboard
                                 </Link>
                             )}
                             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                            <Link className="nav-link" to="/profile">Profile</Link>
                         </>
                     ) : (
                         <>
