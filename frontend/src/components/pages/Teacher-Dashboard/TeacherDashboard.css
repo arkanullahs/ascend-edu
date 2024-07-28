@@ -23,7 +23,7 @@
 }
 
 .teacher-dashboard .add-course-btn {
-    background: linear-gradient(45deg, #1890ff, #40a9ff);
+    background: linear-gradient(-45deg, #ffbc36bd, #f97b45);
     color: #ffffff;
     border: none;
     border-radius: 20px;
@@ -35,6 +35,9 @@
     align-items: center;
     gap: 5px;
     box-shadow: 0 4px 6px rgba(24, 144, 255, 0.3);
+    border-style: outside;
+    font-weight: 600;
+
 }
 
 .teacher-dashboard .add-course-btn:hover {
@@ -64,7 +67,7 @@
     grid-column: 1 / -1;
     display: flex;
     justify-content: space-around;
-    background: linear-gradient(45deg, #1890ff, #40a9ff);
+    background: linear-gradient(65deg, #ffbc36, #ff8640cf);
     color: #ffffff;
     padding: 20px;
 }

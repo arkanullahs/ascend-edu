@@ -1,8 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, RadarChart, Radar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Cell } from 'recharts';
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 import "./Home.css"
+import { useHistory } from 'react-router-dom';
 const Home = () => {
+  const history = useHistory();
+  const handleStudentDashboard = () => {
+    history.push('/student-dashboard');
+  };
+
+  const handleTeacherDashboard = () => {
+    history.push('/signup');
+  };
   const lineChartData = [
     { name: 'Jan', students: 4000, courses: 2400 },
     { name: 'Feb', students: 3000, courses: 1398 },
@@ -19,14 +28,6 @@ const Home = () => {
     { name: 'Arts', value: 200 },
   ];
 
-  const radarChartData = [
-    { subject: 'Math', A: 120, B: 110, fullMark: 150 },
-    { subject: 'Chinese', A: 98, B: 130, fullMark: 150 },
-    { subject: 'English', A: 86, B: 130, fullMark: 150 },
-    { subject: 'Geography', A: 99, B: 100, fullMark: 150 },
-    { subject: 'Physics', A: 85, B: 90, fullMark: 150 },
-    { subject: 'History', A: 65, B: 85, fullMark: 150 },
-  ];
 
   const barChartData = [
     { name: 'Course A', students: 4000, rating: 2400 },
@@ -58,8 +59,18 @@ const Home = () => {
           <h1>বাংলাদেশ শিখবে, লাইভে!</h1>
           <p>স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
           <div className="hero-actions">
-            <button className="btn btn-primary frosty-button">শেখা শুরু করুন</button>
-            <button className="btn btn-secondary frosty-button">শেখানো শুরু করুন</button>
+            <button
+              className="btn btn-primary frosty-button"
+              onClick={handleStudentDashboard}
+            >
+              শেখা শুরু করুন
+            </button>
+            <button
+              className="btn btn-secondary frosty-button"
+              onClick={handleTeacherDashboard}
+            >
+              শেখানো শুরু করুন
+            </button>
           </div>
         </motion.div>
         <motion.div

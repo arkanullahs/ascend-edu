@@ -146,8 +146,8 @@
 }
 
 .teacher-dashboard .submit-btn {
-    background-color: #17a2ff;
-    color: #ffffff;
+    background-color: #ffda8f;
+    color: #333;
 }
 
 .teacher-dashboard .cancel-btn2 {
@@ -156,10 +156,12 @@
     color: #1f1f1f;
 }
 
-.teacher-dashboard .submit-btn:hover,
+.teacher-dashboard .submit-btn:hover {
+    background-color: #fdc553;
+}
+
 .teacher-dashboard .cancel-btn2:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #b8b8b8d7;
 }
 
 @media (max-width: 768px) {

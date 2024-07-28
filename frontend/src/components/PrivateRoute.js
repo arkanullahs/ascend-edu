@@ -9,8 +9,21 @@ const PrivateRoute = ({ component: Component, role, ...rest }) => {
         <Route
             {...rest}
             render={(props) =>
-                isLoggedIn && userRole === role ? (
-                    <Component {...props} />
+                isLoggedIn ? (
+                    role ? (
+                        userRole === role ? (
+                            <Component {...props} />
+                        ) : (
+                            <Redirect
+                                to={{
+                                    pathname: '/',
+                                    state: { from: props.location }
+                                }}
+                            />
+                        )
+                    ) : (
+                        <Component {...props} />
+                    )
                 ) : (
                     <Redirect
                         to={{
