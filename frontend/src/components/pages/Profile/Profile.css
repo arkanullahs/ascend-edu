@@ -52,10 +52,11 @@ body {
 }
 
 .edit-form label {
-    display: block;
+    display: flex;
     margin-bottom: 0.5rem;
     font-weight: 600;
     color: #333;
+    text-align: start;
 }
 
 .edit-form input {

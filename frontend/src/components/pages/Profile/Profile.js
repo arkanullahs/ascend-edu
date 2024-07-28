@@ -127,7 +127,7 @@ const Profile = () => {
                         <p><strong>First Name:</strong> {user.firstName}</p>
                         <p><strong>Last Name:</strong> {user.lastName}</p>
                         <p><strong>Email:</strong> {user.email}</p>
-                        <p><strong>Role:</strong> {user.role}</p>
+                        <p><strong>Unique ID:</strong> {user._id}</p>
                         <button className="btn edit" onClick={() => setIsEditing(true)}>Edit Profile</button>
                     </div>
                 )}

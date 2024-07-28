@@ -1,4 +1,3 @@
-/* CourseCard.css */
 .course-card {
     background-color: #fffcfc;
     border-radius: 15px;
@@ -9,7 +8,7 @@
 
 .course-card:hover {
     transform: translateY(-5px);
-    /*box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);*/
+
 }
 
 .course-card-image {
@@ -26,7 +25,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
-    /* Rounded borders on all sides */
+
 }
 
 .course-card-actions {
@@ -37,13 +36,13 @@
     gap: 10px;
 }
 
-/* Unique styles for action buttons */
+
 .course-card .action-btn {
     background-color: #f1f1f1;
-    /* Light background color */
+
     border: none;
     border-radius: 50%;
-    /* Rounded borders */
+
     width: 40px;
     height: 40px;
     display: flex;
@@ -52,19 +51,19 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     color: #616161;
-    /* Default icon color */
+
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
 
 .course-card .action-btn:hover {
     background-color: #e0e0e0;
-    /* Slightly darker on hover */
+
 }
 
 .course-card .edit-btn {
     background-color: #e3f2fd;
-    /* Light blue */
+
     border-radius: 10px;
     border: none;
     padding-bottom: 5%;
@@ -73,22 +72,22 @@
 
 .course-card .edit-btn:hover {
     background-color: #bbdefb;
-    /* Darker blue on hover */
+
 }
 
 .course-card .edit-btn svg {
     color: #0d47a1;
-    /* Dark blue icon color */
+
 }
 
 .course-card .edit-btn:hover svg {
     color: #0d47a1;
-    /* Dark blue icon color on hover */
+
 }
 
 .course-card .delete-btn {
     background-color: #ffebee;
-    /* Light red */
+
     border-radius: 10px;
     border: none;
     padding-bottom: 5%;
@@ -96,17 +95,17 @@
 
 .course-card .delete-btn:hover {
     background-color: #ffcdd2;
-    /* Darker red on hover */
+
 }
 
 .course-card .delete-btn svg {
     color: #b71c1c;
-    /* Dark red icon color */
+
 }
 
 .course-card .delete-btn:hover svg {
     color: #b71c1c;
-    /* Dark red icon color on hover */
+
 }
 
 .course-card-content {

@@ -140,23 +140,25 @@
 }
 
 .cl-enroll-button {
-    background-color: #3498db;
-    color: white;
+    background-color: #ffda8f;
+    color: #333333;
+    font-weight: 700;
 }
 
 .cl-enroll-button:hover {
-    background-color: #2980b9;
+    background-color: #ffbc36;
 }
 
 .cl-view-button {
     background-color: white;
-    color: #3498db;
-    border: 1px solid #3498db;
+    color: #ffc550;
+    font-weight: 700;
+    border: 2px solid #ffda8f;
 }
 
 .cl-view-button:hover {
-    background-color: #3498db;
-    color: white;
+    background-color: #ffda8f;
+    color: rgb(22, 22, 22);
 }
 
 .cl-view-button-link {
