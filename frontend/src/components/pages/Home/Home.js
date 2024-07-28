@@ -2,7 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 import "./Home.css"
+import { useHistory } from 'react-router-dom';
 const Home = () => {
+  const history = useHistory();
+  const handleStudentDashboard = () => {
+    history.push('/student-dashboard');
+  };
+
+  const handleTeacherDashboard = () => {
+    history.push('/signup');
+  };
   const lineChartData = [
     { name: 'Jan', students: 4000, courses: 2400 },
     { name: 'Feb', students: 3000, courses: 1398 },
@@ -50,8 +59,18 @@ const Home = () => {
           <h1>বাংলাদেশ শিখবে, লাইভে!</h1>
           <p>স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
           <div className="hero-actions">
-            <button className="btn btn-primary frosty-button">শেখা শুরু করুন</button>
-            <button className="btn btn-secondary frosty-button">শেখানো শুরু করুন</button>
+            <button
+              className="btn btn-primary frosty-button"
+              onClick={handleStudentDashboard}
+            >
+              শেখা শুরু করুন
+            </button>
+            <button
+              className="btn btn-secondary frosty-button"
+              onClick={handleTeacherDashboard}
+            >
+              শেখানো শুরু করুন
+            </button>
           </div>
         </motion.div>
         <motion.div
