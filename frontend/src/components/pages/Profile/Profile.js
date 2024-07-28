@@ -20,7 +20,7 @@ const Profile = () => {
 
     const fetchUserProfile = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/users/profile', {
+            const response = await axios.get('https://ascend-edu-server.onrender.com/api/users/profile', {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setUser(response.data);
@@ -42,7 +42,7 @@ const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put('http://localhost:5000/api/users/profile', formData, {
+            await axios.put('https://ascend-edu-server.onrender.com/api/users/profile', formData, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setIsEditing(false);
