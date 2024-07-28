@@ -68,10 +68,11 @@ const Profile = () => {
                 <div className="role-pill">{user.role}</div>
             </motion.div>
             <motion.div
-                className="profile-content"
+                className="profile-content "
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
+
             >
                 {isEditing ? (
                     <form onSubmit={handleSubmit} className="edit-form">
