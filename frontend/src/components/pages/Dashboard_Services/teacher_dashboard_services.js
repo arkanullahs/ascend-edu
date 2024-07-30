@@ -16,13 +16,15 @@ const TeacherDashboard = () => {
     }, []);
 
     const fetchCourses = async () => {
+        setIsLoading(true);
+        setError(null);
         try {
             const response = await axios.get('https://ascend-edu-server.onrender.com/api/courses/teacher', {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(response.data);
         } catch (err) {
-            setError('Failed to fetch courses');
+            setError('Failed to fetch courses. Please try again later.');
         } finally {
             setIsLoading(false);
         }
@@ -36,7 +38,7 @@ const TeacherDashboard = () => {
             setCourses(prevCourses => [...prevCourses, response.data]);
             setShowAddCourse(false);
         } catch (err) {
-            setError('Failed to add course');
+            setError('Failed to add course. Please try again.');
         }
     };
 
@@ -47,7 +49,7 @@ const TeacherDashboard = () => {
             });
             setCourses(prevCourses => prevCourses.map(course => course._id === id ? response.data : course));
         } catch (err) {
-            setError('Failed to update course');
+            setError('Failed to update course. Please try again.');
         }
     };
 
@@ -58,7 +60,7 @@ const TeacherDashboard = () => {
             });
             setCourses(prevCourses => prevCourses.filter(course => course._id !== id));
         } catch (err) {
-            setError('Failed to delete course');
+            setError('Failed to delete course. Please try again.');
         }
     };
 
