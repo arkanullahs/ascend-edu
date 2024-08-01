@@ -21,9 +21,7 @@ const StudentDashboard = () => {
             setAllCourses(response.data);
         } catch (error) {
             setError(`Failed to fetch courses: ${error.message}`);
-        } finally {
-            setLoadingAllCourses(false);
-        }
+        } 
     };
 
     const fetchEnrolledCourses = async () => {
@@ -31,7 +29,6 @@ const StudentDashboard = () => {
             const response = await axios.get('/api/students/enrolledCourses');
             setEnrolledCourses(response.data);
         } catch (error) {
-            setError(`Failed to fetch enrolled courses: ${error.message}`);
         } finally {
             setLoadingEnrolledCourses(false);
         }
@@ -40,13 +37,13 @@ const StudentDashboard = () => {
     const handleEnroll = async (courseId) => {
         try {
             await axios.post(`/api/students/enroll`, { courseId });
-            fetchEnrolledCourses(); // Only re-fetch enrolled courses after successful enrollment
+            fetchEnrolledCourses();
         } catch (error) {
             console.error('Failed to enroll:', error);
         }
     };
 
-    if (loadingAllCourses || loadingEnrolledCourses) {
+    if (loadingAllCourses || loadingAllCourses) { 
         return <div className="sd-loading">Loading...</div>;
     }
 
@@ -63,7 +60,7 @@ const StudentDashboard = () => {
                     courses={allCourses} 
                     onEnroll={handleEnroll} 
                     enrolledCourses={enrolledCourses} 
-                    isEnrolledList={false} 
+                    
                 />
             </div>
             <div className="sd-enrolled-section">
