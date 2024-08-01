@@ -21,7 +21,9 @@ const StudentDashboard = () => {
             setAllCourses(response.data);
         } catch (error) {
             setError(`Failed to fetch courses: ${error.message}`);
-        } 
+        } finally {
+            setLoadingAllCourses(false);
+        }
     };
 
     const fetchEnrolledCourses = async () => {
@@ -29,6 +31,7 @@ const StudentDashboard = () => {
             const response = await axios.get('/api/students/enrolledCourses');
             setEnrolledCourses(response.data);
         } catch (error) {
+            setError(`Failed to fetch enrolled courses: ${error.message}`);
         } finally {
             setLoadingEnrolledCourses(false);
         }
@@ -43,7 +46,7 @@ const StudentDashboard = () => {
         }
     };
 
-    if (loadingAllCourses || loadingAllCourses) { 
+    if (loadingAllCourses || loadingEnrolledCourses) {
         return <div className="sd-loading">Loading...</div>;
     }
 
@@ -60,7 +63,7 @@ const StudentDashboard = () => {
                     courses={allCourses} 
                     onEnroll={handleEnroll} 
                     enrolledCourses={enrolledCourses} 
-                    
+                    isEnrolledList={false} 
                 />
             </div>
             <div className="sd-enrolled-section">
