@@ -1,3 +1,4 @@
+// TeacherDashboard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseForm from '../Teacher-Course-Form/TeacherCourseForm';
