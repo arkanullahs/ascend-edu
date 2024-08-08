@@ -40,9 +40,18 @@ const StudentDashboard = () => {
     const handleEnroll = async (courseId) => {
         try {
             await axios.post(`/api/students/enroll`, { courseId });
-            fetchEnrolledCourses();
+            fetchEnrolledCourses(); 
         } catch (error) {
             console.error('Failed to enroll:', error);
+        }
+    };
+
+    const handleUnenroll = async (courseId) => {
+        try {
+            await axios.post(`/api/students/unenroll`, { courseId });
+            fetchEnrolledCourses(); 
+        } catch (error) {
+            console.error('Failed to unenroll:', error);
         }
     };
 
@@ -70,7 +79,7 @@ const StudentDashboard = () => {
                 <h2 className="sd-section-title">Enrolled Courses</h2>
                 <CourseList 
                     courses={enrolledCourses} 
-                    onEnroll={handleEnroll} 
+                    onUnenroll={handleUnenroll}
                     enrolledCourses={enrolledCourses} 
                     isEnrolledList={true} 
                 />
