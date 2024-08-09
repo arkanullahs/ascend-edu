@@ -42,14 +42,14 @@ const StudentDashboard = () => {
             await axios.post(`/api/students/enroll`, { courseId });
             fetchEnrolledCourses(); 
         } catch (error) {
-            console.error('Failed to enroll:', error);
+            console.error('Failed to enroll:', error.message); 
         }
     };
 
     const handleUnenroll = async (courseId) => {
         try {
             await axios.post(`/api/students/unenroll`, { courseId });
-            fetchEnrolledCourses(); 
+            setEnrolledCourses([]); 
         } catch (error) {
             console.error('Failed to unenroll:', error);
         }
@@ -65,9 +65,9 @@ const StudentDashboard = () => {
 
     return (
         <div className="student-dashboard">
-            <h1 className="sd-title">Student Dashboard</h1>
-            <div className="sd-course-section">
-                <h2 className="sd-section-title">Available Courses</h2>
+            <h1 className="sd-header">Student Dashboard</h1> 
+            <div className="sd-courses">
+                <h2 className="sd-section-header">Available Courses</h2> 
                 <CourseList 
                     courses={allCourses} 
                     onEnroll={handleEnroll} 
@@ -75,14 +75,19 @@ const StudentDashboard = () => {
                     isEnrolledList={false} 
                 />
             </div>
-            <div className="sd-enrolled-section">
-                <h2 className="sd-section-title">Enrolled Courses</h2>
+            <div className="sd-enrolled">
+                <h2 className="sd-section-header">Enrolled Courses</h2> 
                 <CourseList 
                     courses={enrolledCourses} 
                     onUnenroll={handleUnenroll}
                     enrolledCourses={enrolledCourses} 
                     isEnrolledList={true} 
                 />
+            </div>
+            <div className="sd-recommendations">
+                <h2 className="sd-section-header">Recommended Courses</h2>
+                {/* This section is new and doesn't have content yet */}
+                <p>No recommendations available.</p>
             </div>
         </div>
     );
