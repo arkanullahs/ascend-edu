@@ -19,9 +19,11 @@
 
 .sd-loading {
     text-align: center;
-    font-size: 1.2rem;
-    color: #3498db;
+    font-size: 10.2rem;
+    color: #FFBC36;
     margin-top: 20px;
+    font-weight: 700;
+    padding: 20%;
 }
 
 .sd-error {

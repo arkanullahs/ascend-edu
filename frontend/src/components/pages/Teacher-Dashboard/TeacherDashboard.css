@@ -121,8 +121,10 @@
 }
 
 .teacher-dashboard .loading-message {
-    font-size: 1.2rem;
-    color: #666;
     text-align: center;
-    margin-top: 50px;
+    font-size: 10.2rem;
+    color: #FFBC36;
+    margin-top: 20px;
+    font-weight: 700;
+    padding: 20%;
 }
