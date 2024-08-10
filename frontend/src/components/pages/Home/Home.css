@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap');
 
 :root {
     --primary-color: #f8f2e8;
@@ -24,7 +25,6 @@ section {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     min-height: 80vh;
 }
-
 
 .hero {
     padding: 80px 150px;
@@ -87,7 +87,6 @@ section {
 
 .btn-primary {
     background: hsla(0, 0%, 100%, 0.946);
-
 }
 
 .btn-secondary {
@@ -97,8 +96,6 @@ section {
 .frosty-button:hover {
     transform: translateY(-3px);
     background-color: #ffc551;
-
-
 }
 
 .hero-image {
@@ -106,7 +103,6 @@ section {
     display: flex;
     justify-content: flex-start;
     max-width: 40%;
-
 }
 
 .hero-image img {
@@ -116,22 +112,18 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .metrics,
 .trusted-by-section {
     background-color: #f8f2e8;
     padding: 200px;
     text-align: center;
     margin: 0px 0;
-
 }
 
 .trusted-by-section img {
     margin: 0 20px;
     vertical-align: middle;
 }
-
 
 h2 {
     z-index: 5;
@@ -152,14 +144,13 @@ h2 {
     color: var(--black);
     text-align: left;
     margin-top: 0px;
-    margin-bottom: 24px;
+    margin-bottom: 5rem;
     font-family: Inter, sans-serif;
     font-size: 24px;
     font-weight: 300;
     line-height: 140%;
     position: relative;
     backdrop-filter: var(--background-color);
-
 }
 
 .chart-container {
@@ -188,7 +179,6 @@ h2 {
     backdrop-filter: var(--background-color);
 }
 
-
 .logo-card p {
     margin-top: 10px;
     color: #fff;
@@ -203,8 +193,6 @@ h2 {
     border-radius: 10px;
 }
 
-
-
 h6 {
     color: var(--dark-grey);
     letter-spacing: 1px;
@@ -216,7 +204,6 @@ h6 {
     position: relative;
 }
 
-
 .logo-container {
     display: flex;
     justify-content: center;
@@ -226,101 +213,96 @@ h6 {
     padding-top: 20px;
 }
 
-
-
 .company-logo {
     max-width: 130px;
     max-height: 90px;
     width: 130px;
     height: 80px;
     object-fit: contain;
-
 }
 
-/*features card*/
-
+/* Features Section */
 .features {
     background-color: #f8f2e8;
-    padding: 200px;
+    padding: 200px 150px;
     text-align: center;
     margin: 20px 0;
 }
 
-.frosty-card {
-    background: #fbf9f4;
-    border-radius: 20px;
-    border: none;
-    transition: all 0.3s ease;
-}
-
 .feature-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 350fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
 
 .feature-card {
     padding: 30px;
+    position: relative;
+    background: #fbf9f4;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.feature-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-background {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.icon {
+    font-size: 24px;
+    color: #333;
+}
+
+
+.digit {
+    color: var(--deep-gray, #333);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .feature-card h3 {
-    z-index: 5;
-    color: var(--black);
+    color: var(--black, #000);
     text-align: left;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 0;
+    margin-bottom: 16px;
     font-family: Inter, sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 140%;
-    position: relative;
 }
 
 .feature-card p {
-    z-index: 5;
-    color: var(--black);
+    color: var(--black, #000);
     text-align: left;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 0;
+    margin-bottom: 0;
     font-family: Inter, sans-serif;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 140%;
-    position: relative;
 }
-
-
-/*features er icon*/
-.stopwatch {
-    background-color: mistyrose;
-    border-radius: 16px;
-    justify-content: center;
-    align-self: flex-end;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0;
-    padding-left: 4px;
-    padding-right: 4px;
-    display: flex;
-    position: absolute;
-
-}
-
-.digit {
-    color: var(--deep-gray);
-    margin-bottom: 0;
-    font-family: IBM Plex Mono, sans-serif;
-    font-size: 24px;
-}
-
-
 
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
         text-align: center;
+        padding: 40px 20px;
     }
 
     .hero-content {
@@ -336,12 +318,20 @@ h6 {
     }
 
     .logo-container {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 50px;
     }
 
     .company-logo {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 60px;
+    }
+
+    .features {
+        padding: 40px 20px;
+    }
+
+    .feature-cards {
+        grid-template-columns: 1fr;
     }
 }
 
