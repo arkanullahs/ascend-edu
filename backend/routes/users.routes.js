@@ -63,12 +63,12 @@ router.put('/profile', auth, async (req, res) => {
 			return res.status(404).send('User not found');
 		}
 
-		// Update fields
+		// modify fields
 		user.firstName = req.body.firstName || user.firstName;
 		user.lastName = req.body.lastName || user.lastName;
 		user.email = req.body.email || user.email;
 
-		// If password is provided, hash it
+		// hashing
 		if (req.body.password) {
 			const salt = await bcrypt.genSalt(10);
 			user.password = await bcrypt.hash(req.body.password, salt);
@@ -76,7 +76,7 @@ router.put('/profile', auth, async (req, res) => {
 
 		await user.save();
 
-		// Send back updated user without password
+		// jodi pass na thake taile
 		const updatedUser = await User.findById(user._id).select('-password');
 		res.send(updatedUser);
 	} catch (error) {
