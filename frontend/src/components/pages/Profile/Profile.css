@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f7f6;
+    background-color: #F8F2E8;
 }
 
 .profile-container {
@@ -29,8 +29,8 @@ body {
 .role-pill {
     display: inline-block;
     padding: 0.3rem 1rem;
-    background-color: #e0f2f1;
-    color: #00897b;
+    background-color: #fff1d6;
+    color: #e49800;
     border-radius: 50px;
     font-size: 0.9rem;
     text-transform: capitalize;
@@ -69,7 +69,7 @@ body {
 }
 
 .edit-form input:focus {
-    border-color: #00897b;
+    border-color: #ffb521;
     outline: none;
 }
 
@@ -90,17 +90,17 @@ body {
 
 .btn.edit,
 .btn.save {
-    background-color: #00897b;
+    background-color: #ffb521;
     color: #fff;
 }
 
 .btn.cancel {
-    background-color: #f44336;
+    background-color: #ff2112;
     color: #fff;
 }
 
 .btn:hover {
-    opacity: 0.9;
+    opacity: 0.65;
 }
 
 .loading {
