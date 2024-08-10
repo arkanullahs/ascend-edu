@@ -12,12 +12,14 @@ const StudentDashboard = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await axios.get('/api/courses');
-                setAllCourses(response.data);
-                const enrolledResponse = await axios.get('/api/students/enrolledCourses');
-                setEnrolledCourses(enrolledResponse.data);
+                const [allCoursesResponse, enrolledCoursesResponse] = await Promise.all([
+                    axios.get('/api/courses'),
+                    axios.get('/api/students/enrolledCourses')
+                ]);
+                setAllCourses(allCoursesResponse.data);
+                setEnrolledCourses(enrolledCoursesResponse.data);
             } catch (error) {
-                setError(error);
+                setError(`Failed to fetch courses: ${error.message}`);
             } finally {
                 setLoading(false);
             }
@@ -31,7 +33,7 @@ const StudentDashboard = () => {
             const updatedEnrolledCourses = await axios.get('/api/students/enrolledCourses');
             setEnrolledCourses(updatedEnrolledCourses.data);
         } catch (error) {
-            console.error('Failed to enroll', error);
+            console.error('Failed to enroll:', error);
         }
     };
 
@@ -40,7 +42,7 @@ const StudentDashboard = () => {
     }
 
     if (error) {
-        return <div className="sd-error">Error loading courses: {error.message}</div>;
+        return <div className="sd-error">Error loading courses: {error}</div>;
     }
 
     return (
