@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://ascend-edu-server.onrender.com/api'; // Adjust this to your backend URL
+const API_URL = 'https://ascend-edu-server.onrender.com/api'; 
 
 const api = axios.create({
     baseURL: API_URL,
@@ -9,7 +9,6 @@ const api = axios.create({
     },
 });
 
-// Add a request interceptor to include the token in all requests
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
