@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseList from './CourseList';
 import './StudentDashboard.css';
+
 const StudentDashboard = () => {
     const [allCourses, setAllCourses] = useState([]);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [loadingAllCourses, setLoadingAllCourses] = useState(true);
     const [loadingEnrolledCourses, setLoadingEnrolledCourses] = useState(true);
     const [error, setError] = useState(null);
+
     useEffect(() => {
         fetchAllCourses();
         fetchEnrolledCourses();
     }, []);
+
     const fetchAllCourses = async () => {
         try {
             const response = await axios.get('/api/courses');
@@ -21,7 +24,6 @@ const StudentDashboard = () => {
         } finally {
             setLoadingAllCourses(false);
         }
-        } 
     };
 
     const fetchEnrolledCourses = async () => {
@@ -34,10 +36,10 @@ const StudentDashboard = () => {
             setLoadingEnrolledCourses(false);
         }
     };
+
     const handleEnroll = async (courseId) => {
         try {
             await axios.post(`/api/students/enroll`, { courseId });
-            fetchEnrolledCourses(); // Only re-fetch enrolled courses after successful enrollment
             fetchEnrolledCourses();
         } catch (error) {
             console.error('Failed to enroll:', error);
@@ -45,13 +47,13 @@ const StudentDashboard = () => {
     };
 
     if (loadingAllCourses || loadingEnrolledCourses) {
-    if (loadingAllCourses || loadingAllCourses) { 
         return <div className="sd-loading">Loading...</div>;
     }
 
     if (error) {
         return <div className="sd-error">{error}</div>;
     }
+
     return (
         <div className="student-dashboard">
             <h1 className="sd-title">Student Dashboard</h1>
@@ -62,14 +64,12 @@ const StudentDashboard = () => {
                     onEnroll={handleEnroll} 
                     enrolledCourses={enrolledCourses} 
                     isEnrolledList={false} 
-
                 />
             </div>
             <div className="sd-enrolled-section">
                 <h2 className="sd-section-title">Enrolled Courses</h2>
                 <CourseList 
                     courses={enrolledCourses} 
-                    onEnroll={handleEnroll} 
                     enrolledCourses={enrolledCourses} 
                     isEnrolledList={true} 
                 />
@@ -77,4 +77,5 @@ const StudentDashboard = () => {
         </div>
     );
 };
+
 export default StudentDashboard;
