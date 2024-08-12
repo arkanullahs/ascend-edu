@@ -6,43 +6,52 @@ import './StudentDashboard.css';
 const StudentDashboard = () => {
     const [allCourses, setAllCourses] = useState([]);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loadingAllCourses, setLoadingAllCourses] = useState(true);
+    const [loadingEnrolledCourses, setLoadingEnrolledCourses] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchCourses = async () => {
-            try {
-                const [allCoursesResponse, enrolledCoursesResponse] = await Promise.all([
-                    axios.get('/api/courses'),
-                    axios.get('/api/students/enrolledCourses')
-                ]);
-                setAllCourses(allCoursesResponse.data);
-                setEnrolledCourses(enrolledCoursesResponse.data);
-            } catch (error) {
-                setError(`Failed to fetch courses: ${error.message}`);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchCourses();
+        fetchAllCourses();
+        fetchEnrolledCourses();
     }, []);
+
+    const fetchAllCourses = async () => {
+        try {
+            const response = await axios.get('/api/courses');
+            setAllCourses(response.data);
+        } catch (error) {
+            setError(`Failed to fetch courses: ${error.message}`);
+        } finally {
+            setLoadingAllCourses(false);
+        }
+    };
+
+    const fetchEnrolledCourses = async () => {
+        try {
+            const response = await axios.get('/api/students/enrolledCourses');
+            setEnrolledCourses(response.data);
+        } catch (error) {
+            setError(`Failed to fetch enrolled courses: ${error.message}`);
+        } finally {
+            setLoadingEnrolledCourses(false);
+        }
+    };
 
     const handleEnroll = async (courseId) => {
         try {
             await axios.post(`/api/students/enroll`, { courseId });
-            const updatedEnrolledCourses = await axios.get('/api/students/enrolledCourses');
-            setEnrolledCourses(updatedEnrolledCourses.data);
+            fetchEnrolledCourses();
         } catch (error) {
             console.error('Failed to enroll:', error);
         }
     };
 
-    if (loading) {
+    if (loadingAllCourses || loadingEnrolledCourses) {
         return <div className="sd-loading">Loading...</div>;
     }
 
     if (error) {
-        return <div className="sd-error">Error loading courses: {error}</div>;
+        return <div className="sd-error">{error}</div>;
     }
 
     return (
@@ -61,7 +70,6 @@ const StudentDashboard = () => {
                 <h2 className="sd-section-title">Enrolled Courses</h2>
                 <CourseList 
                     courses={enrolledCourses} 
-                    onEnroll={handleEnroll} 
                     enrolledCourses={enrolledCourses} 
                     isEnrolledList={true} 
                 />
