@@ -111,5 +111,7 @@
 }
 
 .signupLink:hover {
+	color: #FFC259;
 	text-decoration: underline;
+	font-weight: 800;
 }
