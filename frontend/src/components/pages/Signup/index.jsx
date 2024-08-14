@@ -1,111 +1,137 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./styles.module.css";
+import { FaUser, FaEnvelope, FaLock, FaUserGraduate } from 'react-icons/fa';
 
-const Signup = () => {
-	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
-		email: "",
-		password: "",
-		role: "student" // default role
-	});
+function Signup() {
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [role, setRole] = useState("student");
 	const [error, setError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
 
-	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
-	};
+	function handleFirstNameChange(e) {
+		setFirstName(e.target.value);
+		setError("");
+	}
 
-	const handleSubmit = async (e) => {
+	function handleLastNameChange(e) {
+		setLastName(e.target.value);
+		setError("");
+	}
+
+	function handleEmailChange(e) {
+		setEmail(e.target.value);
+		setError("");
+	}
+
+	function handlePasswordChange(e) {
+		setPassword(e.target.value);
+		setError("");
+	}
+
+	function handleRoleChange(e) {
+		setRole(e.target.value);
+		setError("");
+	}
+
+	async function handleSubmit(e) {
 		e.preventDefault();
+		setIsLoading(true);
+		setError("");
+
 		try {
-			const url = "https://ascend-edu-server.onrender.com/api/users";
-			const { data: res } = await axios.post(url, data);
+			const response = await axios.post("https://ascend-edu-server.onrender.com/api/users", {
+				firstName,
+				lastName,
+				email,
+				password,
+				role
+			});
 			history.push("/login");
-			console.log(res.message);
-		} catch (error) {
-			console.error("Error details:", error);
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
+		} catch (err) {
+			if (err.response) {
+				setError(err.response.data.message);
+			} else {
+				setError("Something went wrong. Please try again.");
 			}
 		}
-	};
+
+		setIsLoading(false);
+	}
 
 	return (
-		<div className={styles.signup_container}>
-			<div className={styles.signup_form_container}>
-				<div className={styles.left}>
-					<h1>Welcome Back</h1>
-					<Link to="/login">
-						<button type="button" className={styles.white_btn}>
-							Sign in
-						</button>
-					</Link>
-				</div>
-				<div className={styles.right}>
-					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Create Account</h1>
+		<div className={styles.container}>
+			<div className={styles.formWrapper}>
+				<h1 className={styles.title}>Create Account</h1>
+				<h2 className={styles.subtitle}>Please fill in your details to create a new account</h2>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<div className={styles.inputWrapper}>
+						<FaUser className={styles.inputIcon} />
 						<input
 							type="text"
 							placeholder="First Name"
-							name="firstName"
-							onChange={handleChange}
-							value={data.firstName}
-							required
+							value={firstName}
+							onChange={handleFirstNameChange}
 							className={styles.input}
 						/>
+					</div>
+					<div className={styles.inputWrapper}>
+						<FaUser className={styles.inputIcon} />
 						<input
 							type="text"
 							placeholder="Last Name"
-							name="lastName"
-							onChange={handleChange}
-							value={data.lastName}
-							required
+							value={lastName}
+							onChange={handleLastNameChange}
 							className={styles.input}
 						/>
+					</div>
+					<div className={styles.inputWrapper}>
+						<FaEnvelope className={styles.inputIcon} />
 						<input
 							type="email"
 							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
+							value={email}
+							onChange={handleEmailChange}
 							className={styles.input}
 						/>
+					</div>
+					<div className={styles.inputWrapper}>
+						<FaLock className={styles.inputIcon} />
 						<input
 							type="password"
 							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
+							value={password}
+							onChange={handlePasswordChange}
 							className={styles.input}
 						/>
+					</div>
+					<div className={styles.inputWrapper}>
+						<FaUserGraduate className={styles.inputIcon} />
 						<select
-							name="role"
-							onChange={handleChange}
-							value={data.role}
-							required
+							value={role}
+							onChange={handleRoleChange}
 							className={styles.input}
 						>
 							<option value="student">Student</option>
 							<option value="teacher">Teacher</option>
 						</select>
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sign Up
-						</button>
-					</form>
-				</div>
+					</div>
+					{error && <p className={styles.errorText}>{error}</p>}
+					<button type="submit" className={styles.button} disabled={isLoading}>
+						{isLoading ? <div className={styles.spinner}></div> : 'Sign Up'}
+					</button>
+				</form>
+				<p className={styles.signupText}>
+					Already have an account? <Link to="/login" className={styles.signupLink}>Sign In</Link>
+				</p>
 			</div>
 		</div>
 	);
-};
+}
 
 export default Signup;

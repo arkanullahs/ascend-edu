@@ -1,77 +1,87 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./styles.module.css";
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 
-const Login = () => {
-	const [data, setData] = useState({ email: "", password: "" });
+function Login() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
 
-	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
-	};
+	function handleEmailChange(e) {
+		setEmail(e.target.value);
+		setError("");
+	}
 
-	const handleSubmit = async (e) => {
+	function handlePasswordChange(e) {
+		setPassword(e.target.value);
+		setError("");
+	}
+
+	async function handleSubmit(e) {
 		e.preventDefault();
+		setIsLoading(true);
+		setError("");
+
 		try {
-			const url = "https://ascend-edu-server.onrender.com/api/auth";
-			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.token);
-			localStorage.setItem("userRole", res.user.role);
-			history.push(res.user.role === 'teacher' ? "/teacher-dashboard" : "/student-dashboard");
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
+			const response = await axios.post("https://ascend-edu-server.onrender.com/api/auth", {
+				email: email,
+				password: password
+			});
+			localStorage.setItem("token", response.data.token);
+			localStorage.setItem("userRole", response.data.user.role);
+			history.push(response.data.user.role === 'teacher' ? "/teacher-dashboard" : "/student-dashboard");
+		} catch (err) {
+			if (err.response) {
+				setError(err.response.data);
+			} else {
+				setError("Something went wrong. Please try again.");
 			}
 		}
-	};
+
+		setIsLoading(false);
+	}
 
 	return (
-		<div className={styles.login_container}>
-			<div className={styles.login_form_container}>
-				<div className={styles.left}>
-					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Access Courses</h1>
+		<div className={styles.container}>
+			<div className={styles.formWrapper}>
+				<h1 className={styles.title}>Welcome Back</h1>
+				<h2 className={styles.subtitle}>Please enter your registered email and password to login to your account</h2>
+				<form onSubmit={handleSubmit} className={styles.form}>
+					<div className={styles.inputWrapper}>
+						<FaEnvelope className={styles.inputIcon} />
 						<input
 							type="email"
 							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
+							value={email}
+							onChange={handleEmailChange}
 							className={styles.input}
 						/>
+					</div>
+					<div className={styles.inputWrapper}>
+						<FaLock className={styles.inputIcon} />
 						<input
 							type="password"
 							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
+							value={password}
+							onChange={handlePasswordChange}
 							className={styles.input}
 						/>
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sign In
-						</button>
-					</form>
-				</div>
-				<div className={styles.right}>
-					<h1>New Here ?</h1>
-					<Link to="/signup">
-						<button type="button" className={styles.white_btn}>
-							Sign Up
-						</button>
-					</Link>
-				</div>
+					</div>
+					{error && <p className={styles.errorText}>{error}</p>}
+					<button type="submit" className={styles.button} disabled={isLoading}>
+						{isLoading ? <div className={styles.spinner}></div> : 'Sign In'}
+					</button>
+				</form>
+				<p className={styles.signupText}>
+					New here? <Link to="/signup" className={styles.signupLink}>Create an account</Link>
+				</p>
 			</div>
 		</div>
 	);
-};
+}
 
 export default Login;
