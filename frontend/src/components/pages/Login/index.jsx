@@ -48,6 +48,7 @@ function Login() {
 		<div className={styles.container}>
 			<div className={styles.formWrapper}>
 				<h1 className={styles.title}>Welcome Back</h1>
+				<h2 className={styles.subtitle}>Please enter your registered email and password to login to your account</h2>
 				<form onSubmit={handleSubmit} className={styles.form}>
 					<input
 						type="email"
