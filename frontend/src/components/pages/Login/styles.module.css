@@ -9,20 +9,21 @@
 	min-height: 100vh;
 	background-color: #F8F2E8;
 	font-family: Inter, sans-serif;
+	padding: 1rem;
 }
 
 .formWrapper {
 	background-color: #FBF9F4;
-	padding: 2.5em;
+	padding: 2rem;
 	border-radius: 15px;
 	width: 100%;
-	max-width: 400px;
+	max-width: 450px;
 }
 
 .title {
 	font-size: 2rem;
 	color: #333;
-	margin-bottom: 0.6rem;
+	margin-bottom: 0.4rem;
 	text-align: left;
 	font-weight: 600;
 }
@@ -30,7 +31,7 @@
 .subtitle {
 	font-size: 1rem;
 	color: #50505094;
-	margin-bottom: 1.2rem;
+	margin-bottom: 1.5rem;
 	text-align: left;
 	font-weight: normal;
 }
@@ -41,12 +42,16 @@
 	gap: 1rem;
 }
 
+.inputWrapper {
+	position: relative;
+}
+
 .input {
 	width: 100%;
-	padding: 0.75rem;
+	padding: 0.75rem 0.75rem 0.75rem 2.5rem;
 	border: 1.5px solid #fffaee;
-	border-radius: 15px;
-	font-size: 1rem;
+	border-radius: 12px;
+	font-size: 0.9rem;
 	transition: border-color 0.3s ease;
 }
 
@@ -55,35 +60,46 @@
 	border-color: #FFC259;
 }
 
+.inputIcon {
+	position: absolute;
+	left: 0.75rem;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #888;
+	font-size: 1rem;
+}
+
 .errorText {
 	color: #ff4757;
-	font-size: 0.875rem;
-	margin-top: -0.5rem;
-	margin-bottom: 0.5rem;
+	font-size: 0.8rem;
+	margin-top: 0.25rem;
 }
 
 .button {
 	background-color: #FFC259;
 	color: white;
 	border: none;
-	padding: 0.75rem;
-	border-radius: 5px;
-	font-size: 1rem;
+	padding: 0.5rem;
+	border-radius: 15px;
+	font-size: 1.1rem;
 	font-weight: bolder;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 0.75rem;
 }
 
 .button:hover {
-	background-color: #FFC259;
+	background-color: #FFB230;
+	padding: 0.5rem;
 }
 
 .button:disabled {
 	background-color: #ffd896;
 	cursor: not-allowed;
+	padding: 0.5rem;
 }
 
 .spinner {
@@ -106,9 +122,9 @@
 }
 
 .signupText {
+	margin-top: 1.5rem;
+	font-size: 0.9rem;
 	text-align: center;
-	margin-top: 1rem;
-	font-size: 0.95rem;
 }
 
 .signupLink {
@@ -118,7 +134,15 @@
 }
 
 .signupLink:hover {
-	color: #FFC259;
+	color: #FFB230;
 	text-decoration: underline;
-	font-weight: 800;
+}
+
+select.input {
+	appearance: none;
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+	background-repeat: no-repeat;
+	background-position: right 1rem top 50%;
+	background-size: 0.65rem auto;
+	padding-right: 2.5rem;
 }

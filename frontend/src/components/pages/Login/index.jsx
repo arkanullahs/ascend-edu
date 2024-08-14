@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import styles from "../Login/styles.module.css";
+import styles from "./styles.module.css";
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 
 function Login() {
 	const [email, setEmail] = useState("");
@@ -50,20 +51,26 @@ function Login() {
 				<h1 className={styles.title}>Welcome Back</h1>
 				<h2 className={styles.subtitle}>Please enter your registered email and password to login to your account</h2>
 				<form onSubmit={handleSubmit} className={styles.form}>
-					<input
-						type="email"
-						placeholder="Email"
-						value={email}
-						onChange={handleEmailChange}
-						className={styles.input}
-					/>
-					<input
-						type="password"
-						placeholder="Password"
-						value={password}
-						onChange={handlePasswordChange}
-						className={styles.input}
-					/>
+					<div className={styles.inputWrapper}>
+						<FaEnvelope className={styles.inputIcon} />
+						<input
+							type="email"
+							placeholder="Email"
+							value={email}
+							onChange={handleEmailChange}
+							className={styles.input}
+						/>
+					</div>
+					<div className={styles.inputWrapper}>
+						<FaLock className={styles.inputIcon} />
+						<input
+							type="password"
+							placeholder="Password"
+							value={password}
+							onChange={handlePasswordChange}
+							className={styles.input}
+						/>
+					</div>
 					{error && <p className={styles.errorText}>{error}</p>}
 					<button type="submit" className={styles.button} disabled={isLoading}>
 						{isLoading ? <div className={styles.spinner}></div> : 'Sign In'}
