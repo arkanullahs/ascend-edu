@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
 .navbar {
     background-color: transparent;
     box-shadow: none;
@@ -5,6 +7,7 @@
     transition: all 0.3s;
     z-index: 1000;
     padding: 15px 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 .navbar.scrolled {
@@ -20,14 +23,32 @@
     text-decoration: none;
 }
 
+.brand-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
 .nav-link {
     color: #333;
     margin: 0 10px;
     transition: color 0.3s;
+    display: flex;
+    align-items: center;
 }
 
 .nav-link:hover {
     color: #1890ff;
+}
+
+.nav-icon {
+    margin-right: 5px;
+    font-size: 1.1rem;
+}
+
+.nav-text {
+    font-size: 1rem;
 }
 
 .navbar.mobile-view {
