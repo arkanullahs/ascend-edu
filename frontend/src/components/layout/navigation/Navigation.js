@@ -3,9 +3,10 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Navbar, Nav } from 'react-bootstrap';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faSignInAlt, faUserPlus, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo3.png';
 import './Navigation.css';
-
 const Navigation = () => {
     const [scrolling, setScrolling] = useState(false);
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 767);
@@ -85,7 +86,8 @@ const Navigation = () => {
                         width="30"
                         height="30"
                         className="d-inline-block align-top mx-2"
-                    /> ASCEND
+                    />
+                    <span className="brand-text">ASCEND</span>
                 </Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -95,23 +97,33 @@ const Navigation = () => {
                         <>
                             {userRole === 'teacher' ? (
                                 <Link to="/teacher-dashboard" className="nav-link">
-                                    Dashboard
+                                    <FontAwesomeIcon icon={faHome} className="nav-icon" />
+                                    <span className="nav-text">Dashboard</span>
                                 </Link>
                             ) : (
                                 <Link to="/student-dashboard" className="nav-link">
-                                    Dashboard
+                                    <FontAwesomeIcon icon={faHome} className="nav-icon" />
+                                    <span className="nav-text">Dashboard</span>
                                 </Link>
                             )}
-                            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                            <Link className="nav-link" to="/profile">{userName || 'Profile'}</Link>
+                            <Nav.Link onClick={handleLogout}>
+                                <FontAwesomeIcon icon={faSignOutAlt} className="nav-icon" />
+                                <span className="nav-text">Logout</span>
+                            </Nav.Link>
+                            <Link className="nav-link" to="/profile">
+                                <FontAwesomeIcon icon={faUser} className="nav-icon" />
+                                <span className="nav-text">{userName || 'Profile'}</span>
+                            </Link>
                         </>
                     ) : (
                         <>
                             <Link to="/login" className="nav-link">
-                                Login
+                                <FontAwesomeIcon icon={faSignInAlt} className="nav-icon" />
+                                <span className="nav-text">Login</span>
                             </Link>
                             <Link to="/signup" className="nav-link">
-                                Sign Up
+                                <FontAwesomeIcon icon={faUserPlus} className="nav-icon" />
+                                <span className="nav-text">Sign Up</span>
                             </Link>
                         </>
                     )}
