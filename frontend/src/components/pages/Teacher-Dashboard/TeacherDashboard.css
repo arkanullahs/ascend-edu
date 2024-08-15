@@ -2,6 +2,7 @@
     padding-top: 5%;
     padding-right: 5%;
     padding-left: 5%;
+    padding-bottom: 10%;
     background-color: #f8f2e8;
     min-height: 100vh;
 
@@ -20,6 +21,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    font-weight: 500;
 }
 
 .teacher-dashboard .add-course-btn {
@@ -127,4 +129,23 @@
     margin-top: 20px;
     font-weight: 700;
     padding: 20%;
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add-course-btn {
+        margin-top: 10px;
+    }
+
+    .summary-card {
+        flex-direction: row;
+    }
+
+    .teacher-dashboard {
+        padding-top: 25%;
+    }
 }

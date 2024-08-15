@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSignInAlt, faUserPlus, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo3.png';
 import './Navigation.css';
+
 const Navigation = () => {
     const [scrolling, setScrolling] = useState(false);
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 767);
@@ -68,6 +69,7 @@ const Navigation = () => {
         setUserName('');
         history.push('/');
     };
+
 
     return (
         <Navbar
