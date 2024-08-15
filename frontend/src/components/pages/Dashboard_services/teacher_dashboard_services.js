@@ -1,111 +1,140 @@
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useState, useEffect, useCallback } from 'react';
 import CourseForm from '../Teacher-Course-Form/TeacherCourseForm';
 import CourseCard from './CourseCard';
-import { FaPlus, FaChalkboardTeacher } from 'react-icons/fa';
+import CourseFilter from './CourseFilter';
+import { FaPlus, FaChalkboardTeacher, FaBook, FaUsers, FaClock } from 'react-icons/fa';
 import './TeacherDashboard.css';
 
-const useFetchCourses = () => {
+const TeacherDashboard = () => {
     const [courses, setCourses] = useState([]);
+    const [filteredCourses, setFilteredCourses] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    const fetchCourses = useCallback(async () => {
-        try {
-            const response = await axios.get('https://ascend-edu-server.onrender.com/api/courses/teacher', {
-                headers: { 'x-auth-token': localStorage.getItem('token') }
-            });
-            setCourses(response.data);
-        } catch (err) {
-            setError('Failed to fetch courses');
-        } finally {
-            setIsLoading(false);
-        }
-    }, []);
+    const [showAddCourse, setShowAddCourse] = useState(false);
 
     useEffect(() => {
         fetchCourses();
-    }, [fetchCourses]);
+    }, []);
 
-    return { courses, isLoading, error, fetchCourses };
-};
-
-const TeacherDashboard = () => {
-    const { courses, isLoading, error, fetchCourses } = useFetchCourses();
-    const [showAddCourse, setShowAddCourse] = useState(false);
-
-    const handleAddCourse = async (courseData) => {
+    const fetchCourses = async () => {
         try {
-            const response = await axios.post('https://ascend-edu-server.onrender.com/api/courses', courseData, {
+            const response = await axios.get('/api/courses', {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
-            fetchCourses(); // Refresh the course list
-            setShowAddCourse(false);
+            setCourses(response.data);
+            setFilteredCourses(response.data);
         } catch (err) {
-            alert('Failed to add course');
+            setError('Failed to fetch courses. Please try again later.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    const handleUpdateCourse = async (id, courseData) => {
+    const handleAddCourse = async (courseData) => {
         try {
-            await axios.put(`https://ascend-edu-server.onrender.com/api/courses/${id}`, courseData, {
+            const response = await axios.post('/api/courses', courseData, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
-            fetchCourses(); // Refresh the course list
+            setCourses(prevCourses => [...prevCourses, response.data]);
+            setFilteredCourses(prevCourses => [...prevCourses, response.data]);
+            setShowAddCourse(false);
         } catch (err) {
-            alert('Failed to update course');
+            setError('Failed to add course. Please try again.');
+        }
+    };
+
+    const handleUpdateCourse = async (id, updatedData) => {
+        try {
+            const response = await axios.put(`/api/courses/${id}`, updatedData, {
+                headers: { 'x-auth-token': localStorage.getItem('token') }
+            });
+            setCourses(prevCourses =>
+                prevCourses.map(course => course._id === id ? response.data : course)
+            );
+            setFilteredCourses(prevCourses =>
+                prevCourses.map(course => course._id === id ? response.data : course)
+            );
+        } catch (err) {
+            setError('Failed to update course. Please try again.');
         }
     };
 
     const handleDeleteCourse = async (id) => {
         try {
-            await axios.delete(`https://ascend-edu-server.onrender.com/api/courses/${id}`, {
+            await axios.delete(`/api/courses/${id}`, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
-            fetchCourses(); // Refresh the course list
+            setCourses(prevCourses => prevCourses.filter(course => course._id !== id));
+            setFilteredCourses(prevCourses => prevCourses.filter(course => course._id !== id));
         } catch (err) {
-            alert('Failed to delete course');
+            setError('Failed to delete course. Please try again.');
         }
     };
 
-    if (isLoading) {
-        return <div className="teacher-dashboard__loading">Loading courses...</div>;
-    }
+    const handleFilter = (filterCriteria) => {
+        const { name, minDuration, maxDuration, minStudents, maxStudents } = filterCriteria;
+        let filtered = courses;
 
-    if (error) {
-        return <div className="teacher-dashboard__error">{error}</div>;
-    }
+        if (name) {
+            filtered = filtered.filter(course => course.name.toLowerCase().includes(name.toLowerCase()));
+        }
+        if (minDuration) {
+            filtered = filtered.filter(course => course.duration >= minDuration);
+        }
+        if (maxDuration) {
+            filtered = filtered.filter(course => course.duration <= maxDuration);
+        }
+        if (minStudents) {
+            filtered = filtered.filter(course => course.students.length >= minStudents);
+        }
+        if (maxStudents) {
+            filtered = filtered.filter(course => course.students.length <= maxStudents);
+        }
+
+        setFilteredCourses(filtered);
+    };
+
+    if (isLoading) return <div className="loading-message">Loading...</div>;
+    if (error) return <div className="error-message">{error}</div>;
 
     return (
         <div className="teacher-dashboard">
-            <header className="teacher-dashboard__header">
-                <h1 className="teacher-dashboard__title">
-                    <FaChalkboardTeacher /> Teacher Dashboard
-                </h1>
-                <button 
-                    className="teacher-dashboard__add-course-btn" 
-                    onClick={() => setShowAddCourse(prevShow => !prevShow)}
-                >
-                    <FaPlus /> {showAddCourse ? 'Cancel' : 'Add New Course'}
+            <header className="dashboard-header">
+                <h1>Teacher Dashboard</h1>
+                <button className="add-course-button" onClick={() => setShowAddCourse(!showAddCourse)}>
+                    <FaPlus /> Add Course
                 </button>
             </header>
-            <div className="teacher-dashboard__content">
-                {showAddCourse && <CourseForm onSubmit={handleAddCourse} />}
-                <div className="teacher-dashboard__course-list">
-                    {courses.length > 0 ? (
-                        courses.map(course => (
-                            <CourseCard 
-                                key={course._id}
-                                course={course}
-                                onUpdate={handleUpdateCourse}
-                                onDelete={handleDeleteCourse}
-                            />
-                        ))
-                    ) : (
-                        <div className="teacher-dashboard__no-courses">No courses available.</div>
-                    )}
+
+            <CourseFilter onFilter={handleFilter} />
+
+            <div className="dashboard-grid">
+                <div className="dashboard-card summary-card">
+                    <div className="summary-item">
+                        <FaChalkboardTeacher /> {courses.length} Courses
+                    </div>
+                    <div className="summary-item">
+                        <FaUsers /> Total Students
+                    </div>
+                    <div className="summary-item">
+                        <FaClock /> Total Hours
+                    </div>
                 </div>
+
+                {filteredCourses.map(course => (
+                    <CourseCard
+                        key={course._id}
+                        course={course}
+                        onUpdate={handleUpdateCourse}
+                        onDelete={handleDeleteCourse}
+                    />
+                ))}
             </div>
+
+            {showAddCourse && (
+                <CourseForm onAddCourse={handleAddCourse} onCancel={() => setShowAddCourse(false)} />
+            )}
         </div>
     );
 };
