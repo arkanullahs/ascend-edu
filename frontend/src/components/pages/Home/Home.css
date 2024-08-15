@@ -298,6 +298,8 @@ h6 {
     line-height: 140%;
 }
 
+/* ... (keep the existing CSS above) ... */
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -311,6 +313,14 @@ h6 {
 
     .hero-actions {
         justify-content: center;
+        max-width: 100%;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+        justify-content: center;
+        max-width: 100%;
+
     }
 
     .chart-container {
@@ -318,12 +328,13 @@ h6 {
     }
 
     .logo-container {
-        gap: 50px;
+        gap: 15px;
+        flex-wrap: wrap;
     }
 
     .company-logo {
-        width: 100px;
-        height: 60px;
+        width: 80px;
+        height: 40px;
     }
 
     .features {
@@ -333,15 +344,39 @@ h6 {
     .feature-cards {
         grid-template-columns: 1fr;
     }
+
+    .metrics,
+    .trusted-by-section {
+        padding: 40px 20px;
+    }
+
+    .chart-card {
+        overflow-x: auto;
+    }
+
+    .chart-card .recharts-wrapper {
+        min-width: 300px;
+    }
+
+    .trusted-by {
+        padding: 5px 10px;
+    }
 }
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-top: 15%;
     }
 
     .hero p {
         font-size: 1rem;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+        justify-content: center;
+
     }
 
     .frosty-button {
@@ -350,7 +385,7 @@ h6 {
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .feature-card h3 {
@@ -359,5 +394,15 @@ h6 {
 
     .chart-card h3 {
         font-size: 1rem;
+    }
+
+    .logo-container {
+        gap: 15px;
+    }
+
+    .company-logo {
+        width: 60px;
+        height: 30px;
+        gap: 50px;
     }
 }
