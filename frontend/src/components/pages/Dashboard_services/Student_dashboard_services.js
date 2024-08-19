@@ -65,10 +65,10 @@ const StudentDashboard = () => {
 
     return (
         <div className="student-dashboard">
-            <h1 className="sd-title">Student Dashboard</h1>
+            <h1 className="sd-title">Student Dashboard</h1> 
 
             <div className="sd-course-section">
-                <h2 className="sd-section-title">Available Courses</h2>
+                <h2 className="sd-section-title">Available Courses</h2> 
                 <CourseList 
                     courses={allCourses} 
                     onEnroll={handleEnroll} 
@@ -78,7 +78,7 @@ const StudentDashboard = () => {
             </div>
 
             <div className="sd-enrolled-section">
-                <h2 className="sd-section-title">Enrolled Courses</h2>
+                <h2 className="sd-section-title">Enrolled Courses</h2> 
                 <CourseList 
                     courses={enrolledCourses} 
                     onUnenroll={handleUnenroll}
@@ -88,6 +88,7 @@ const StudentDashboard = () => {
 
             <div className="sd-recommendations">
                 <h2 className="sd-section-title">Recommended Courses</h2>
+                {/* This section is new and doesn't have content yet */}
                 <p>No recommendations available.</p>
             </div>
         </div>
