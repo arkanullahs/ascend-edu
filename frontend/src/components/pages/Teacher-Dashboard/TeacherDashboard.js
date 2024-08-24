@@ -87,7 +87,7 @@ const TeacherDashboard = () => {
                         <div className="summary-item">
                             <FaUsers className="summary-icon" />
                             <div className="summary-info">
-                                <h3>53</h3>
+                                <h3>{courses.reduce((sum, course) => sum + course.__v, 0)}</h3>
                                 <p>Total Students</p>
                             </div>
                         </div>

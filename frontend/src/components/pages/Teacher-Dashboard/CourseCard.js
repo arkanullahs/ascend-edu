@@ -50,7 +50,7 @@ const CourseCard = ({ course, onUpdate, onDelete }) => {
                 <h2 className="course-title">{course.title}</h2>
                 <p className="course-description">{course.description}</p>
                 <div className="course-meta">
-                    <div className="meta-item"><MdPeople /> {course.students || 0} students</div>
+                    <div className="meta-item"><MdPeople /> {course.__v} students</div>
                     <div className="meta-item"><MdAccessTime /> {course.duration} hours</div>
                     <div className="meta-item"><MdAttachMoney /> {course.price}</div>
                 </div>
