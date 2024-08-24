@@ -45,7 +45,7 @@ function Signup() {
 		setError("");
 
 		try {
-			const response = await axios.post("https://ascend-edu-server.onrender.com/api/users", {
+			await axios.post("https://ascend-edu-server.onrender.com/api/users", {
 				firstName,
 				lastName,
 				email,

@@ -6,7 +6,7 @@ import './StudentDashboard.css';
 const StudentDashboard = () => {
     const [courses, setCourses] = useState([]);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [loading, setLoading] = useState({ courses: true, enrolledCourses: true });
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -21,10 +21,10 @@ const StudentDashboard = () => {
                 headers: { 'x-auth-token': token }
             });
             setCourses(response.data);
-            setIsLoading(false);
+            setLoading(prev => ({ ...prev, courses: false }));
         } catch (err) {
             setError('Failed to fetch courses');
-            setIsLoading(false);
+            setLoading(prev => ({ ...prev, courses: false }));
         }
     };
 
@@ -35,8 +35,10 @@ const StudentDashboard = () => {
                 headers: { 'x-auth-token': token }
             });
             setEnrolledCourses(response.data);
+            setLoading(prev => ({ ...prev, enrolledCourses: false }));
         } catch (err) {
             setError('Failed to fetch enrolled courses');
+            setLoading(prev => ({ ...prev, enrolledCourses: false }));
         }
     };
 
@@ -52,13 +54,20 @@ const StudentDashboard = () => {
         }
     };
 
-    if (isLoading) return <div className="sd-loading">Loading...</div>;
+    if (loading.courses || loading.enrolledCourses) {
+        return (
+            <div className="sd-loading">
+                <div className="spinner"></div>
+            </div>
+        );
+    }
+
     if (error) return <div className="sd-error">{error}</div>;
 
     const availableCourses = courses.filter(course => !enrolledCourses.some(ec => ec._id === course._id));
 
     return (
-        <main className='sd-main-container' >
+        <main className='sd-main-container'>
             <div className="sd-container">
                 <h2 className="sd-subtitle">Enrolled Courses</h2>
                 <CourseList

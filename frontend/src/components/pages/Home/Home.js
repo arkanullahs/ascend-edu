@@ -1,12 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 import "./Home.css"
 import { useHistory } from 'react-router-dom';
 import { Video, Clock, HelpCircle, Award } from 'react-feather';
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
   const history = useHistory();
+
+  useEffect(() => {
+    // Check if the page is already loaded
+    if (document.readyState === 'complete') {
+      setLoading(false);
+    } else {
+      // If not, wait for the window.onload event
+      window.addEventListener('load', () => {
+        setLoading(false);
+      });
+    }
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener('load', () => {
+        setLoading(false);
+      });
+    };
+  }, []);
 
   const handleStudentDashboard = () => {
     history.push('/student-dashboard');
@@ -51,43 +70,45 @@ const Home = () => {
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
-
   const features = [
     {
       title: 'Live Classes',
       description: 'Engage in real-time with expert instructors and fellow learners. Participate in interactive discussions and gain hands-on experience. Stay connected with peers through live Q&A sessions.',
-      icon: <Video />, // Using the Video icon
-      color: '#F7E2E2' // Light Pink
+      icon: <Video />,
+      color: '#F7E2E2'
     },
     {
       title: 'Self-Paced Learning',
       description: 'Learn at your own speed with our flexible course structure. Access materials anytime, anywhere, and progress at your convenience. Balance your learning with personal and professional commitments.',
-      icon: <Clock />, // Using the Clock icon
-      color: '#D6EBF5' // Powder Blue
+      icon: <Clock />,
+      color: '#D6EBF5'
     },
     {
       title: 'Interactive Quizzes',
       description: 'Test your knowledge with fun and challenging assessments. Receive instant feedback and track your progress. Reinforce your learning through practical, scenario-based questions.',
-      icon: <HelpCircle />, // Using the HelpCircle icon
-      color: '#D0EDD6' // Pale Green
+      icon: <HelpCircle />,
+      color: '#D0EDD6'
     },
     {
       title: 'Certificate Programs',
       description: 'Earn recognized certifications to boost your career. Validate your skills and enhance your resume. Join a community of certified professionals and expand your network.',
-      icon: <Award />, // Using the Award icon
-      color: '#EECFFE' // Plum
+      icon: <Award />,
+      color: '#EECFFE'
     }
   ];
+
+  if (loading) {
+    return (
+      <div className="loading-spinner">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="home">
       <header className="hero frosty-glass">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0 }}
-          className="hero-content"
-        >
+        <div className="hero-content">
           <h1>বাংলাদেশ শিখবে, লাইভে!</h1>
           <p>স্কিল শেখার মাধ্যমে বদলে ফেলুন নিজের ভবিষ্যৎ</p>
           <div className="hero-actions">
@@ -104,29 +125,19 @@ const Home = () => {
               শেখানো শুরু করুন
             </button>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.0 }}
-          className="hero-image"
-        >
+        </div>
+        <div className="hero-image">
           <img src="https://cdn.ostad.app/public/upload/2024-02-18T10-44-42.948Z-2dsdss.webp" alt="E-learning illustration" />
-        </motion.div>
+        </div>
       </header>
 
       <section className="trusted-by">
         <h6>AS FEATURED IN</h6>
         <div className="logo-container">
           {companyLogos.map((company, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
+            <div key={index}>
               <img src={company.logo} alt={`${company.name} logo`} className="company-logo" />
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -136,22 +147,16 @@ const Home = () => {
         <p className="featuretext">Our platform offers a variety of features to support your educational journey:</p>
         <div className="feature-cards">
           {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              className="feature-card frosty-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
+            <div key={index} className="feature-card frosty-card">
               <div className="feature-card-header">
                 <div className="icon-background" style={{ backgroundColor: feature.color }}>
-                  {feature.icon} {/* Rendering the Feather Icon directly */}
+                  {feature.icon}
                 </div>
                 <div className="digit">{`0${index + 1}`}</div>
               </div>
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

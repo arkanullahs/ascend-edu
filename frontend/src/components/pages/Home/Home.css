@@ -262,12 +262,10 @@ h6 {
     align-items: center;
 }
 
-
 .icon {
     font-size: 24px;
     color: #333;
 }
-
 
 .digit {
     color: var(--deep-gray, #333);
@@ -298,8 +296,36 @@ h6 {
     line-height: 140%;
 }
 
-/* ... (keep the existing CSS above) ... */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
 
+.spinner {
+    border: 5px solid #ffe4ad;
+    border-top: 5px solid #ffae0d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -320,7 +346,6 @@ h6 {
         margin-top: 20px;
         justify-content: center;
         max-width: 100%;
-
     }
 
     .chart-container {
@@ -376,7 +401,6 @@ h6 {
     .hero-image {
         margin-top: 20px;
         justify-content: center;
-
     }
 
     .frosty-button {
