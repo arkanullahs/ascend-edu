@@ -89,7 +89,7 @@ const Navigation = () => {
                         height="30"
                         className="d-inline-block align-top mx-2"
                     />
-                    <span className="brand-text">ASCEND</span>
+                    <span className="brand-text">NextEd</span>
                 </Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
