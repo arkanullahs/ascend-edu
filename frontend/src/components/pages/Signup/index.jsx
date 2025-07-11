@@ -13,6 +13,7 @@ function Signup() {
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
+	const apiUrl = process.env.REACT_APP_API_URL;
 
 	function handleFirstNameChange(e) {
 		setFirstName(e.target.value);
@@ -45,7 +46,7 @@ function Signup() {
 		setError("");
 
 		try {
-			await axios.post("https://ascend-edu-server.onrender.com/api/users", {
+			await axios.post(`${apiUrl}/users`, {
 				firstName,
 				lastName,
 				email,

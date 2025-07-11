@@ -12,12 +12,13 @@ const CourseDetails = () => {
     const [videoUrl, setVideoUrl] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [activeLesson, setActiveLesson] = useState(0);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchCourseDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`https://ascend-edu-server.onrender.com/api/courses/getOneCourse/${courseId}`, {
+                const response = await axios.get(`${apiUrl}/courses/getOneCourse/${courseId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setCourse(response.data);

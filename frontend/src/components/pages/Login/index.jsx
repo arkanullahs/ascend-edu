@@ -10,6 +10,7 @@ function Login() {
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
+	const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 	function handleEmailChange(e) {
 		setEmail(e.target.value);
@@ -27,7 +28,7 @@ function Login() {
 		setError("");
 
 		try {
-			const response = await axios.post("https://ascend-edu-server.onrender.com/api/auth", {
+			const response = await axios.post(`${apiUrl}/auth`, {
 				email: email,
 				password: password
 			});

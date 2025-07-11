@@ -16,6 +16,7 @@ const Navigation = () => {
     const [userName, setUserName] = useState('');
     const history = useHistory();
     const location = useLocation();
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
     const handleScroll = () => {
         if (window.scrollY > 50) {
@@ -48,7 +49,7 @@ const Navigation = () => {
 
             if (token) {
                 try {
-                    const response = await axios.get('https://ascend-edu-server.onrender.com/api/users/profile', {
+                    const response = await axios.get(`${apiUrl}/users/profile`, {
                         headers: { 'x-auth-token': token }
                     });
                     setUserName(`${response.data.firstName} ${response.data.lastName}`);

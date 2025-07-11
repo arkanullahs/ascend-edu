@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://ascend-edu-server.onrender.com/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 class AuthService {
     async login(username, password) {

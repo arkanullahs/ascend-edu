@@ -8,6 +8,7 @@ const StudentDashboard = () => {
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [loading, setLoading] = useState({ courses: true, enrolledCourses: true });
     const [error, setError] = useState(null);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         fetchCourses();
@@ -17,7 +18,7 @@ const StudentDashboard = () => {
     const fetchCourses = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('https://ascend-edu-server.onrender.com/api/courses', {
+            const response = await axios.get(`${apiUrl}/courses`, {
                 headers: { 'x-auth-token': token }
             });
             setCourses(response.data);
@@ -31,7 +32,7 @@ const StudentDashboard = () => {
     const fetchEnrolledCourses = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('https://ascend-edu-server.onrender.com/api/users/enrolledCourses', {
+            const response = await axios.get(`${apiUrl}/users/enrolledCourses`, {
                 headers: { 'x-auth-token': token }
             });
             setEnrolledCourses(response.data);
@@ -45,7 +46,7 @@ const StudentDashboard = () => {
     const handleEnroll = async (courseId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.post(`https://ascend-edu-server.onrender.com/api/courses/${courseId}/enroll`, {}, {
+            await axios.post(`${apiUrl}/courses/${courseId}/enroll`, {}, {
                 headers: { 'x-auth-token': token }
             });
             fetchEnrolledCourses();

@@ -10,6 +10,7 @@ const TeacherDashboard = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showAddCourse, setShowAddCourse] = useState(false);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         fetchCourses();
@@ -17,7 +18,7 @@ const TeacherDashboard = () => {
 
     const fetchCourses = async () => {
         try {
-            const response = await axios.get('https://ascend-edu-server.onrender.com/api/courses/teacher', {
+            const response = await axios.get(`${apiUrl}/courses/teacher`, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(response.data);
@@ -30,7 +31,7 @@ const TeacherDashboard = () => {
 
     const handleAddCourse = async (courseData) => {
         try {
-            const response = await axios.post('https://ascend-edu-server.onrender.com/api/courses', courseData, {
+            const response = await axios.post(`${apiUrl}/courses`, courseData, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses([...courses, response.data]);
@@ -42,7 +43,7 @@ const TeacherDashboard = () => {
 
     const handleUpdateCourse = async (id, courseData) => {
         try {
-            const response = await axios.put(`https://ascend-edu-server.onrender.com/api/courses/${id}`, courseData, {
+            const response = await axios.put(`${apiUrl}/courses/${id}`, courseData, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(courses.map(course => course._id === id ? response.data : course));
@@ -53,7 +54,7 @@ const TeacherDashboard = () => {
 
     const handleDeleteCourse = async (id) => {
         try {
-            await axios.delete(`https://ascend-edu-server.onrender.com/api/courses/${id}`, {
+            await axios.delete(`${apiUrl}/courses/${id}`, {
                 headers: { 'x-auth-token': localStorage.getItem('token') }
             });
             setCourses(courses.filter(course => course._id !== id));
